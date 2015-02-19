@@ -1,6 +1,6 @@
 <?php
 
-namespace Joli\Bundle\BlogBundle\Tests\Controller;
+namespace Nastycode\Bundle\FrontBundle\Tests\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
