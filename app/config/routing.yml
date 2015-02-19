@@ -1,8 +1,4 @@
-joli_blog:
-    resource: "@JoliBlogBundle/Controller/"
-    type: 	  annotation
-    prefix:  /
-
-app:
-    resource: @AppBundle/Controller/
+nastycode_front:
+    resource: "@NastycodeFrontBundle/Controller/"
     type:     annotation
+    prefix:   /
