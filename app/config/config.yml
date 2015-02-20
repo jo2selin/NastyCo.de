@@ -24,6 +24,7 @@ framework:
         handler_id: null
     fragments: null
     http_method_override: true
+    translator: { fallback: %locale% }
 twig:
     debug: "%kernel.debug%"
     strict_variables: "%kernel.debug%"
@@ -46,3 +47,9 @@ swiftmailer:
     password: "%mailer_password%"
     spool:
         type: memory
+
+#FOS USER BUNDLE CONFIG
+fos_user:
+    db_driver: orm
+    firewall_name: main
+    user_class: Nastycode\Bundle\UserBundle\Entity\User

@@ -1,4 +1,11 @@
+nasty_code_user:
+    resource: "@NastycodeUserBundle/Resources/config/routing.yml"
+    prefix:   /
+
 nastycode_front:
     resource: "@NastycodeFrontBundle/Controller/"
     type:     annotation
     prefix:   /
+
+fos_user:
+    resource: "@NastycodeUserBundle/Resources/routing/all.xml"
