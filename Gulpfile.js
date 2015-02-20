@@ -1,8 +1,12 @@
 var gulp = require('gulp'),
     gulpLoadPlugins = require('gulp-load-plugins'),
-    plugins = gulpLoadPlugins();
+    plugins = gulpLoadPlugins(),
+    autoprefixer = require('gulp-autoprefixer'),
+    cmq = require('gulp-combine-media-queries');
 
-var app = 'app/Resources';
+var app = 'app/Resources',
+    src = 'src/Nastycode/Bundle/FrontBundle/Resources/public',
+    web = 'web/bundles/nastycodefront';
 
 var onError = function(err) {
     console.log(err);
@@ -16,14 +20,27 @@ gulp.task('Sass', function() {
         }))
         .pipe(plugins.rubySass({
             compass: true,
-            style: 'compressed',
-            check: true}))
+            style: 'nested',
+            check: true
+        }))
+        .pipe(cmq({ //combine media query
+            log: true
+        }))
+        .pipe(autoprefixer({
+            browsers: ['last 2 versions'],
+            cascade: false
+        }))
         .pipe(plugins.minifyCss({keepSpecialComments:0}))
         .pipe(plugins.rename({suffix: '.min'}))
-        .pipe(gulp.dest('web/css/'));
+        .pipe(gulp.dest(src + '/css/'))
+        .pipe(gulp.dest(web + '/css/'));
 });
 
-
+gulp.task('default', function () {
+    return gulp.src('src/app.css')
+        
+        .pipe(gulp.dest('dist'));
+});
 
 
 
