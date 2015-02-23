@@ -2,10 +2,35 @@
 
 {% block body %}
 
-  <h1>Form</h1>
-		<form>
-			{{ form_widget(form) }}
-			<input type="submit">
-		</form>
+	<section class="fullWidth orange">
+		<div class="row identification">
+			<p class="right">
+				<a href="#">Connexion</a>
+				<a data-dropdown="drop-inscription" aria-controls="drop-inscription" aria-expanded="false">Inscription</a>
+				<div id="drop-inscription" data-dropdown-content class="f-dropdown content" aria-hidden="true" tabindex="-1">
+				  <p>Some text that people will think is awesome! Some text that people will think is awesome! Some text that people will think is awesome!</p>
+				</div>
+			</p>
+		</div>
+		<div class="row">
+		  	<h1>Accueil</h1>
+		  	<h2>Connexion</h2>
+			<form>
+				{{ form_widget(form) }}
+				<input type="submit">
+			</form>
+		</div>
+		<div class="row">
+			<div class="small-3 small-centered columns">
+				<p class="text-center">
+					<a href="#" class="button">Découvrir</a>
+				</p>
+			</div>
+		</div>
+	</section>
+	<section class="fullWidth darkBlue">
+		<a href="#" class="button">Découvrir</a>
+		<a href="#" class="button">Publier</a>
+	</section>
 
 {% endblock %}

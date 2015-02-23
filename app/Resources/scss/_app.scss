@@ -1,8 +1,11 @@
 // @import "settings";
 // @import "_foundation";  // LOAD ALL
-@import "foundation/components/global",
+@import 
 		"foundation/components/buttons",
-		"foundation/components/forms"; 
+		"foundation/components/dropdown",
+		"foundation/components/forms",
+		"foundation/components/grid",
+		"foundation/components/type"; 
 
 // Or selectively include components
 // @import

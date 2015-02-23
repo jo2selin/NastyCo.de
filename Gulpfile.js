@@ -36,6 +36,13 @@ gulp.task('Sass', function() {
         .pipe(gulp.dest(web + '/css/'));
 });
 
+
+gulp.task('script', function() {
+    return gulp.src( app + '/js/**/*.js' )
+        .pipe(gulp.dest(src + '/js/' ))   
+        .pipe(gulp.dest(web + '/js/' ));    
+});
+
 gulp.task('default', function () {
     return gulp.src('src/app.css')
         
