@@ -1,0 +1,14 @@
+
+.row.identification{
+	p{
+		a{
+			color: darken($primary-color , 20%);
+			+ a {
+				&:before{
+					content:" | ";
+					margin: 0 10px;
+				}
+			}
+		}
+	}
+}

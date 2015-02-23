@@ -19,7 +19,7 @@ gulp.task('Sass', function() {
             errorHandler: onError
         }))
         .pipe(plugins.rubySass({
-            compass: true,
+            compass: false,
             style: 'nested',
             check: true
         }))
@@ -34,6 +34,13 @@ gulp.task('Sass', function() {
         .pipe(plugins.rename({suffix: '.min'}))
         .pipe(gulp.dest(src + '/css/'))
         .pipe(gulp.dest(web + '/css/'));
+});
+
+
+gulp.task('script', function() {
+    return gulp.src( app + '/js/**/*.js' )
+        .pipe(gulp.dest(src + '/js/' ))   
+        .pipe(gulp.dest(web + '/js/' ));    
 });
 
 gulp.task('default', function () {
