@@ -19,7 +19,7 @@ gulp.task('Sass', function() {
             errorHandler: onError
         }))
         .pipe(plugins.rubySass({
-            compass: true,
+            compass: false,
             style: 'nested',
             check: true
         }))
