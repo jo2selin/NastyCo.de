@@ -5,20 +5,27 @@
 	<section class="fullWidth orange">
 		<div class="row identification">
 			<p class="right">
-				<a href="#">Connexion</a>
+				<a data-dropdown="drop-connexion" aria-controls="drop-connexion" aria-expanded="false">Connexion</a>
 				<a data-dropdown="drop-inscription" aria-controls="drop-inscription" aria-expanded="false">Inscription</a>
+				<div id="drop-connexion" data-dropdown-content class="f-dropdown content" aria-hidden="true" tabindex="-1">
+					<form>
+						<input type="text" name="" value="" placeholder="">
+						<input type="submit">
+					</form>
+				</div>
 				<div id="drop-inscription" data-dropdown-content class="f-dropdown content" aria-hidden="true" tabindex="-1">
-				  <p>Some text that people will think is awesome! Some text that people will think is awesome! Some text that people will think is awesome!</p>
+					<form>
+						{{ form_widget(form) }}
+						<input type="submit">
+					</form>
 				</div>
 			</p>
 		</div>
-		<div class="row">
-		  	<h1>Accueil</h1>
-		  	<h2>Connexion</h2>
-			<form>
-				{{ form_widget(form) }}
-				<input type="submit">
-			</form>
+		<div class="row text-center">
+			<h1>
+				<img src="#" alt="NastyCo.de logo">
+			</h1>
+			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
 		</div>
 		<div class="row">
 			<div class="small-3 small-centered columns">
@@ -34,3 +41,5 @@
 	</section>
 
 {% endblock %}
+
+

@@ -19,6 +19,9 @@ section.orange{
 			background: darken($primary-color, 10%);
 		}
 	}
+	p{
+		color: $primary-color-dark;
+	}
 }
 
 section.darkBlue{
@@ -26,8 +29,8 @@ section.darkBlue{
 
 	.button{
 		background: $quaternary-color;
-		border-color: $secondary-color;
-		color: $secondary-color;
+		border-color: $primary-color;
+		color: $primary-color;
 		&:hover{
 			background: darken($quaternary-color, 10%);
 		}
