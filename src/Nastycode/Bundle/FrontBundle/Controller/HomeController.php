@@ -26,16 +26,5 @@ class HomeController extends Controller
             return $this->redirect($this->generateUrl('task_success'));
         }
     }
-    /**
-     * @Route("/")
-     * @Template()
-     */
-    public function formAction(Request $request)
-    {
-        // $post = new Post();
-        $form = $this->createForm(new SignInPostType());
-        return array(
-            'form' => $form->createView(),
-        );
-    }
+
 }
