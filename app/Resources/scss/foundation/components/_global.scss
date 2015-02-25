@@ -245,6 +245,9 @@ $secondary-color:   #F8CA4D !default; // yellow
 $tertiary-color:    #3F5666 !default; // blue
 $quaternary-color:  #2F3440 !default; // dark blue
 
+// DARK versions
+$primary-color-dark:  darken($primary-color, 30%);
+
 $alert-color: #f04124 !default;     // cinnabar
 $success-color: #43AC6A !default;   // sea-green
 $warning-color: #f08a24 !default;   // carrot

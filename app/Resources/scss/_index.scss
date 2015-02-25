@@ -1,12 +1,25 @@
 .row.identification{
 	p{
 		a{
-			color: darken($primary-color , 20%);
-			+ a {
-				&:before{
-					content:" | ";
-					margin: 0 10px;
-				}
+			padding: 10px;
+			color: $primary-color-dark;
+			// border: solid 1px $primary-color;
+			// border-radius: $global-radius;
+			// @include radius();
+			border-bottom: solid 5px $primary-color;
+			@include single-transition(border-bottom-color);
+			// + a {
+			// 	&:before{
+			// 		content:" | ";
+			// 		margin: 0 10px;
+			// 	}
+			// }
+			&:hover{
+				border-bottom: solid 5px darken($primary-color, 5%);
+			}
+			&:active{
+				// margin-top: 4px;
+				border-bottom: solid 0px $primary-color;
 			}
 		}
 	}
