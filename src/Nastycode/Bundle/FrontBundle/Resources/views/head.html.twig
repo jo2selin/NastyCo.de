@@ -1,5 +1,8 @@
-{% extends "::base.html.twig" %}
-{% block head %}
-	<link rel="stylesheet" href="{{ asset('bundles/nastycodefront/css/normalize.min.css') }}">
-	<link rel="stylesheet" href="{{ asset('bundles/nastycodefront/css/styles.min.css') }}">
-{% endblock %}
+<head>
+    <meta charset="UTF-8" />
+    <title>{% block title %}Welcome!{% endblock %}</title>
+    <link rel="stylesheet" href="{{ asset('bundles/nastycodefront/css/normalize.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('bundles/nastycodefront/css/styles.min.css') }}">
+    
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />    
+</head>
