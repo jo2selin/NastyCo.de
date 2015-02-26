@@ -1,16 +1,21 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8" />
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        <link rel="stylesheet" href="{{ asset('bundles/nastycodefront/css/normalize.min.css') }}">
-        <link rel="stylesheet" href="{{ asset('bundles/nastycodefront/css/styles.min.css') }}">
-        {% block stylesheets %}{% endblock %}
-        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
-    </head>
+    {% block head %}
+        {{ include("NastycodeFrontBundle::head.html.twig") }}
+    {% endblock %}
+    
     <body>
-        {% block body %}{% endblock %}
+
         
-        {% block javascripts %}{% endblock %}
+        {% block body %}
+        {% endblock %}
+
+        {% block footer %}
+            {{ include("NastycodeFrontBundle::footer.html.twig") }}
+        {% endblock %}
+        
+        {% block javascripts %}
+            {{ include("NastycodeFrontBundle::javascripts.html.twig") }}
+        {% endblock %}
     </body>
 </html>

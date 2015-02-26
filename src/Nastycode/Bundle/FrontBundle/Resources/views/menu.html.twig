@@ -1,0 +1,25 @@
+<div class="row identification">
+    <div class="right">
+        {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+            {{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }} |
+            <a href="{{ path('fos_user_security_logout') }}">
+                {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}
+            </a>
+        {% else %}
+            <p class="right">
+                <a data-dropdown="drop-connexion" aria-controls="drop-connexion" aria-expanded="false">Connexion</a>
+                <a data-dropdown="drop-inscription" aria-controls="drop-inscription" aria-expanded="false">Inscription</a>
+                <div id="drop-connexion" data-dropdown-content class="f-dropdown content" aria-hidden="true" tabindex="-1">
+                    {{ render(controller(
+                    'NastycodeUserBundle:Users:login'
+                    )) }}
+                </div>
+                <div id="drop-inscription" data-dropdown-content class="f-dropdown content" aria-hidden="true" tabindex="-1">
+                    {{ render(controller(
+                    'NastycodeUserBundle:Users:register'
+                    )) }}
+                </div>
+            </p>
+        {% endif %}
+    </div>
+</div>
