@@ -1,10 +1,10 @@
 imports:
-    - 
-        resource: parameters.yml
-    - 
-        resource: security.yml
-    - 
-        resource: services.yml
+    - { resource: "parameters.yml" }
+    - { resource: "security.yml" }
+    - { resource: "services.yml" }
+    - { resource: "@NastycodeUserBundle/Resources/config/services.yml" }
+    # - { resource: "@NastycodeUserBundle/Resources/config/routing.yml" }
+
 framework:
     secret: "%secret%"
     router:
@@ -25,9 +25,11 @@ framework:
     fragments: null
     http_method_override: true
     translator: { fallback: %locale% }
+
 twig:
     debug: "%kernel.debug%"
     strict_variables: "%kernel.debug%"
+
 doctrine:
     dbal:
         driver: "%database_driver%"
@@ -40,6 +42,7 @@ doctrine:
     orm:
         auto_generate_proxy_classes: "%kernel.debug%"
         auto_mapping: true
+
 swiftmailer:
     transport: "%mailer_transport%"
     host: "%mailer_host%"

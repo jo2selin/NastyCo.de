@@ -1,0 +1,7 @@
+fos_user_register:
+    resource: "@FOSUserBundle/Resources/config/routing/registration.xml"
+    prefix: /
+
+# fos_user_registration_register:
+#     path:      /account/register
+#     defaults:  { _controller: FOSUserBundle:Registration:register }

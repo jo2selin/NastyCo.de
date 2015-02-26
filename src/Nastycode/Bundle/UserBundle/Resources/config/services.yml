@@ -1,0 +1,10 @@
+#src/Nastycode/UserBundle/Resources/config/services.yml
+parameters:
+    nastycode_user.registration.completed: Nastycode\Bundle\UserBundle\EventListener\RegistrationConfirmListener
+
+services:
+    nastycode_user.registration.completed:
+        class: Nastycode\Bundle\UserBundle\EventListener\RegistrationConfirmListener
+        arguments: [@router]
+        tags:
+            - { name: kernel.event_subscriber }
