@@ -24,14 +24,21 @@ class RegistrationConfirmListener implements EventSubscriberInterface
     {
         return array(
             FOSUserEvents::REGISTRATION_SUCCESS => array('onRegistrationConfirm',-10),
-            FOSUserEvents::CHANGE_PASSWORD_SUCCESS => array('onRegistrationConfirm',-10), 
-            FOSUserEvents::PROFILE_EDIT_SUCCESS => array('onRegistrationConfirm',-10),                        
+            FOSUserEvents::CHANGE_PASSWORD_SUCCESS => array('onUpdatedInfoAccount',-10), 
+            FOSUserEvents::PROFILE_EDIT_SUCCESS => array('onUpdatedInfoAccount',-10),                        
         );
     }
 
     public function onRegistrationConfirm(FormEvent $event)
     {
         $url = $this->router->generate('nastycode_front_home_index');
+
+        $event->setResponse(new RedirectResponse($url));
+    }
+
+    public function onUpdatedInfoAccount(FormEvent $event)
+    {
+        $url = $this->router->generate('nastycode_front_account_account');
 
         $event->setResponse(new RedirectResponse($url));
     }

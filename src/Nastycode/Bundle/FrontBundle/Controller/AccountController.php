@@ -6,19 +6,16 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\Security\Core\SecurityContextInterface;
-use Symfony\Component\Security\Core\Exception\AuthenticationException;
 
 
-class HomeController extends Controller
+class AccountController extends Controller
 {
     /**
-     * @Route("/")
+     * @Route("/account")
      * @Template()
      */
-    public function indexAction(Request $request)
+    public function accountAction(Request $request)
     {
-
     }
     /**
      * @Route("/")

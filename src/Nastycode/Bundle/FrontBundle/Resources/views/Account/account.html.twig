@@ -1,0 +1,18 @@
+{% extends "::base.html.twig" %}
+{% block body %}
+
+	<section class="fullWidth orange">
+		{% block menu %}
+			{{ include("NastycodeFrontBundle::menu.html.twig") }}
+		{% endblock %}
+		<div class="row text-center">
+			{{ render(controller('NastycodeUserBundle:Profile:edit')) }}
+			
+		</div>
+		<div class="row">
+			{{ render(controller('NastycodeUserBundle:ChangePassword:changePassword')) }}
+		</div>
+	</section>
+
+{% endblock %}
+
