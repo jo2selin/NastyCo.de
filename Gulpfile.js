@@ -42,6 +42,7 @@ gulp.task('script', function() {
         // app + '/js/foundation.min.js',
         app + '/js/foundation/foundation.js',
         app + '/js/foundation/foundation.dropdown.js',
+        app + '/js/foundation/foundation.tab.js',
         app + '/js/app.js'
         ])
 

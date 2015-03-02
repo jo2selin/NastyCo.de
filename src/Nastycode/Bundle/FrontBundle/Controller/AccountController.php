@@ -11,7 +11,7 @@ use Symfony\Component\HttpFoundation\Request;
 class AccountController extends Controller
 {
     /**
-     * @Route("/account")
+     * @Route("/me")
      * @Template()
      */
     public function accountAction(Request $request)
