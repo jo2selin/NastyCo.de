@@ -219,6 +219,15 @@ $base-line-height: 1.5 !default;
   clip: auto;
 }
 
+// @mixins NASTYCODE
+//
+// Create Circle with fixed size
+@mixin nasty-circle($size) {
+  width: $size;
+  height: $size;
+  border-radius: $size/2;
+}
+
 $white         : #FFFFFF !default;
 $ghost         : #FAFAFA !default;
 $snow          : #F9F9F9 !default;

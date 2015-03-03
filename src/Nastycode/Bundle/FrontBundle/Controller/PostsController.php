@@ -6,19 +6,22 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Security\Core\SecurityContextInterface;
+use Symfony\Component\Security\Core\Exception\AuthenticationException;
 
 
-class AccountController extends Controller
+class PostsController extends Controller
 {
     /**
-     * @Route("/me")
+     * @Route("/nastycodes")
      * @Template()
      */
-    public function accountAction(Request $request)
+    public function postsAction()
     {
-        $user = $this->getUser();
-        return $this->render('NastycodeFrontBundle:Account:account.html.twig', array(
+    	$user = $this->getUser();
+        return $this->render('NastycodeFrontBundle:Home:index.html.twig', array(
             'user' => $user
         ));
     }
+   
 }

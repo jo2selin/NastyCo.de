@@ -1,0 +1,182 @@
+section.myAccount {
+	.infoUser {
+		margin:auto;
+		text-align:center;
+		@media #{$medium-up} {
+			margin-top:10em;
+		}
+		.userPic {
+			display:block;
+			width:150px;
+			height:150px;
+			margin:auto;
+			border-radius:75px;
+			background:$primary-color;
+			box-shadow:0 0 0 10px $secondary-color;
+			@media #{$medium-up} {
+				display:inline-block;
+				margin-right:20px;
+				margin-left:160px;
+			}
+			img {
+				width:150px;
+				height:150px;
+				border-radius:75px;
+			}
+		}
+		.user {
+			display:block;
+			margin-top:20px;
+			vertical-align:middle;
+			@media #{$medium-up} {
+				display:inline-block;
+				margin:0;
+				padding-left:10px;
+				text-align:left;
+			}
+			p {
+				margin-bottom:0;
+			}
+			h2:hover:after,
+			p:hover:after {
+				position:absolute;
+				margin-left:10px;
+				content:'edit';
+			}
+			a {
+				color:inherit;
+			}
+		}
+	}
+	section.row {
+		width:100%;
+		max-width:none;
+		margin:0;
+		margin-top:20px;
+	}
+	.statsUser {
+		margin-top:20px;
+		text-align:center;
+		@media #{$medium-up} {
+			margin-top:5em;
+		}
+		.circleStat {
+			font-size:2.5em;
+			display:block;
+			width:100px;
+			height:100px;
+			margin:25px auto;
+			text-align:center;
+			vertical-align:middle;
+			color:$primary-color;
+			border-radius:50px;
+			background:darken($primary-color, 15%);
+			box-shadow:0 0 0 8px darken($primary-color, 15%);
+			// @include single-transition(box-shadow);
+
+			@include single-transition(all);
+			& a {
+				display:block;
+				width:100px;
+				height:100px;
+				padding-top:20px;
+				color:inherit;
+				outline:none;
+			}
+			&.active {
+				color:$white;
+				background:none;
+				box-shadow:0 0 0 8px $secondary-color;
+				&:hover {
+					box-shadow:0 0 0 8px lighten($secondary-color, 5%);
+				}
+			}
+			&:hover {
+				box-shadow:0 0 0 8px darken($primary-color, 20%);
+			}
+			@media #{$medium-up} {
+				display:inline-block;
+				margin:0 20px;
+			}
+		}
+	}
+	.tabs-content {
+		.content {
+			padding:15px 0;
+			h3{
+				font-style: italic;
+			}
+			ul {
+				margin:0;
+				list-style:none;
+				li {
+					display:inline-block;
+					margin:10px;
+					.userPics {
+						font-size:2em;
+						display:inline-block;
+						color:$white;
+						background:darken($primary-color, 15%);
+
+						@include nasty-circle(70px);
+						span {
+							position:absolute;
+							padding-top:9px;
+							text-align:center;
+							color:$white;
+							background:rgba($primary-color, 0.5);
+
+							@include nasty-circle(70px);
+							@include single-transition(all, 150ms);
+						}
+					}
+					.detailPost {
+						display:inline-block;
+						padding:10px 0 0 10px;
+						vertical-align:top;
+						h4 {
+							margin:0;
+							font-style: italic;
+							small {
+								font-style:italic;
+							}
+						}
+						p {
+							font-size:rem-calc(14);
+							margin:0;
+							margin-top:-6px;
+							color:darken($secondary-color, 20%);
+						}
+					}
+					&:hover {
+						.userPics {
+							span {
+								color:$primary-color;
+								background:$secondary-color;
+								box-shadow:0 0 0 5px $primary-color;
+								&:after{
+									content: "ico-like";
+									font-size: 10px;
+									display: block;
+									margin-top: -12px;
+								}
+							}
+						}
+					}
+					&.comments{
+						display: table;
+						.userPics{ display: table-cell;}
+						.detailPost{ 
+							display: table-cell;
+							p{
+								color: $primary-color;
+								font-size:rem-calc(16);
+								font-style: italic;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
