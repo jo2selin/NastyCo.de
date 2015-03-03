@@ -20,7 +20,9 @@ security:
                 login_path:             fos_user_security_login
                 use_forward:            false
                 check_path:             fos_user_security_check
-                failure_path:           null
+                failure_path:           /
+                failure_forward:        false
+                use_referer:            true
                 default_target_path:    /
                 remember_me:            true
             remember_me:
