@@ -16,9 +16,12 @@ class PostsController extends Controller
      * @Route("/nastycodes")
      * @Template()
      */
-    public function postsAction(Request $request)
+    public function postsAction()
     {
-
+    	$user = $this->getUser();
+        return $this->render('NastycodeFrontBundle:Home:index.html.twig', array(
+            'user' => $user
+        ));
     }
    
 }
