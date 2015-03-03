@@ -7,7 +7,6 @@ body {
 section.fullWidth {
 	width:100%;
 	height:90%;
-	padding:20px;
 }
 
 section.orange {
@@ -20,6 +19,26 @@ section.orange {
 	}
 }
 
+section.yellow {
+	background:$secondary-color;
+	.button {
+		@include button($button-med, $secondary-color, true, false, false, false, darken($secondary-color, 10%), $secondary-color, true, $secondary-color);
+	}
+	p {
+		color:$primary-color;
+	}
+}
+
+section.grey {
+	background:$smoke;
+	.button {
+		@include button($button-med, $smoke, true, false, false, false, darken($smoke, 10%), $jumbo, true, $jumbo);
+	}
+	p {
+		color:$jumbo;
+	}
+}
+
 section.darkBlue {
 	background:$quaternary-color;
 	.button {
@@ -28,6 +47,7 @@ section.darkBlue {
 }
 
 .row.identification {
+	padding: 20px;
 	.not_connected {
 		a {
 			padding:10px;

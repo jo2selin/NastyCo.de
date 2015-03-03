@@ -1,7 +1,5 @@
 {
-  "name": "symphony",
-  "version": "0.0.1",
-  "author": "Laurent Brunet <lbrunet@jolicode.com>",
+  "name": "nastyCode",
   "private": true,
   "repository": {
     "type": "git",
@@ -21,6 +19,6 @@
     "gulp-load-plugins": "^0.8.0"
   },
   "devDependencies": {
-    "gulp": "^3.8.11"
+    "gulp-imagemin": "^2.2.1"
   }
 }
