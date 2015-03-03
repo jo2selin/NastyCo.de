@@ -8,7 +8,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Core\SecurityContextInterface;
 use Symfony\Component\Security\Core\Exception\AuthenticationException;
-
+use Symfony\Component\Finder\Exception\AccessDeniedException;
 
 class HomeController extends Controller
 {
@@ -16,16 +16,11 @@ class HomeController extends Controller
      * @Route("/")
      * @Template()
      */
-    public function indexAction(Request $request)
+    public function indexAction()
     {
-
+        $user = $this->getUser();
+        return $this->render('NastycodeFrontBundle:Home:index.html.twig', array(
+            'user' => $user
+        ));
     }
-    /**
-     * @Route("/")
-     * @Template()
-     */
-    // public function javascriptsAction()
-    // {
-    //     return $this->render('NastycodeFrontBundle:Home:javascripts.html.twig');
-    // }
 }

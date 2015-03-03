@@ -16,13 +16,9 @@ class AccountController extends Controller
      */
     public function accountAction(Request $request)
     {
+        $user = $this->getUser();
+        return $this->render('NastycodeFrontBundle:Account:account.html.twig', array(
+            'user' => $user
+        ));
     }
-    /**
-     * @Route("/")
-     * @Template()
-     */
-    // public function javascriptsAction()
-    // {
-    //     return $this->render('NastycodeFrontBundle:Home:javascripts.html.twig');
-    // }
 }
