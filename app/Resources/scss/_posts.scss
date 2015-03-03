@@ -1,0 +1,65 @@
+section.sectionPosts {
+	background:url('../img/back_posts.png');
+	article {
+		margin:30px 0;
+		.info-author-code {
+			display:table;
+			.picUser {
+				display:table-cell;
+
+				@include nasty-circle(70px);
+				img {
+					background:$tertiary-color;
+
+					@include nasty-circle(70px);
+				}
+			}
+			.descrCode {
+				display:table-cell;
+				padding-left:20px;
+				h2 {
+					font-size:rem-calc(30);
+					line-height:1em;
+					color:$tertiary-color;
+					small {
+						font-style:italic;
+						color:inherit;
+					}
+				}
+			}
+		}
+		.scriptsNastycode {
+			section {
+				background:$tertiary-color;
+				header {
+					display:table;
+					background:$gainsboro;
+					label {
+						display:table-cell;
+						padding:3px 20px;
+						color:$white;
+						background:$primary-color;
+					}
+					h5 {
+						font-size:rem-calc(16);
+						display:table-cell;
+						width:100%;
+						margin:auto;
+						text-align:center;
+						vertical-align:middle;
+						color:$tertiary-color;
+					}
+				}
+				code {
+					display:block;
+					width:100%;
+					height:100%;
+					padding:15px;
+					color:$white;
+					border:none;
+					background:$quaternary-color;
+				}
+			}
+		}
+	}
+}
