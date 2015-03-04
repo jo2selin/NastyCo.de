@@ -77,6 +77,15 @@ gulp.task('images', function() {
         .pipe(gulp.dest(web + '/img/' ));
 });
 
+/*
+ * Font
+ */
+gulp.task('font', function() {
+    return gulp.src( app + '/font/*' )
+        .pipe(gulp.dest(src + '/font/' ))   
+        .pipe(gulp.dest(web + '/font/' ));
+});
+
 
 // gulp.task('default', function () {
 //     return gulp.src('src/app.css')

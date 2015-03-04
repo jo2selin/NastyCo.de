@@ -1,3 +1,20 @@
+/*
+*    FONTS
+*/
+@charset "UTF-8";
+
+@font-face {
+  font-family: "nastycode";
+  src:url("fonts/nastycode.eot");
+  src:url("fonts/nastycode.eot?#iefix") format("embedded-opentype"),
+    url("fonts/nastycode.woff") format("woff"),
+    url("fonts/nastycode.ttf") format("truetype"),
+    url("fonts/nastycode.svg#nastycode") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+
 body {
 	background:$snow;
 
@@ -6,7 +23,7 @@ body {
 
 section.fullWidth {
 	width:100%;
-	height:90%;
+	min-height:90%;
 }
 
 section.orange {

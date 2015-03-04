@@ -19,7 +19,7 @@ class PostsController extends Controller
     public function postsAction()
     {
     	$user = $this->getUser();
-        return $this->render('NastycodeFrontBundle:Home:index.html.twig', array(
+        return $this->render('NastycodeFrontBundle:Posts:posts.html.twig', array(
             'user' => $user
         ));
     }
