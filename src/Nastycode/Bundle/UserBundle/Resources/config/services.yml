@@ -8,3 +8,5 @@ services:
         arguments: [@router]
         tags:
             - { name: kernel.event_subscriber }
+    authentication_handler:
+        class: Nastycode\Bundle\UserBundle\Handler\AuthenticationHandler

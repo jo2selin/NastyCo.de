@@ -8,4 +8,4 @@ nastycode_front:
     prefix:   /
 
 fos_user:
-    resource: "@NastycodeUserBundle/Resources/routing/all.xml"
+    resource: "@NastycodeUserBundle/Resources/config/routing/all.xml"
