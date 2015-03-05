@@ -1,4 +1,6 @@
-namespace Nastycode\Bundle\FrontBundle\TaskBundle\Entity;
+<?php
+
+namespace Nastycode\Bundle\TaskBundle\Entity;
 
 class Task
 {
