@@ -1,6 +1,6 @@
 <?php
 
-namespace Nastycode\Bundle\FrontBundle\TaskBundle\Controller;
+namespace Nastycode\Bundle\TaskBundle\Controller;
 
 use Symfony\Bundle\TaskBundle\Controller\Controller;
 use Symfony\TaskBundle\Entity\Task;
@@ -8,7 +8,7 @@ use Symfony\Component\HttpFoundation\Request;
 
 class DefaultController extends Controller
 {
-    public function newAction(Request $request)
+    public function indexAction(Request $request)
     {
         // crée une tâche et lui donne quelques données par défaut pour cet exemple
         $task = new Task();
