@@ -1,3 +1,11 @@
+nastycode_task:
+    resource: "@NastycodeTaskBundle/Resources/config/routing.php"
+    prefix:   /
+
+nastycode_front_bundle_task:
+    resource: "@NastycodeFrontBundleTaskBundle/Resources/config/routing.php"
+    prefix:   /
+
 nasty_code_user:
     resource: "@NastycodeUserBundle/Resources/config/routing.yml"
     prefix:   /

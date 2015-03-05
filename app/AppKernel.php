@@ -20,6 +20,7 @@ class AppKernel extends Kernel
 
             new Nastycode\Bundle\FrontBundle\NastycodeFrontBundle(),
             new Nastycode\Bundle\UserBundle\NastycodeUserBundle(),
+            new Nastycode\Bundle\TaskBundle\NastycodeTaskBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
