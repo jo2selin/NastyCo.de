@@ -12,7 +12,7 @@ nastycode_front:
     prefix:   /
 
 fos_user:
-    resource: "@NastycodeUserBundle/Resources/routing/all.xml"
+    resource: "@NastycodeUserBundle/Resources/config/routing/all.xml"
 
 nastycode_post_code:
     path:     /post_code
@@ -20,4 +20,4 @@ nastycode_post_code:
 
 nastycode_form_code:
     path:     /form
-    defaults: { _controller: NastycodeFrontBundle:CodeForm:codeform }
+    defaults: { _controller: NastycodeTaskBundle:Default:index }

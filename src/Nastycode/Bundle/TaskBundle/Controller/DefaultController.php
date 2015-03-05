@@ -2,8 +2,8 @@
 
 namespace Nastycode\Bundle\TaskBundle\Controller;
 
-use Symfony\Bundle\TaskBundle\Controller\Controller;
-use Symfony\TaskBundle\Entity\Task;
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Nastycode\Bundle\TaskBundle\Entity\Task;
 use Symfony\Component\HttpFoundation\Request;
 
 class DefaultController extends Controller
@@ -21,7 +21,7 @@ class DefaultController extends Controller
             ->add('save', 'submit')
             ->getForm();
 
-        return $this->render('NastycodeBundleTaskBundle:Default:index.html.twig', array(
+        return $this->render('NastycodeTaskBundle:Default:index.html.twig', array(
             'form' => $form->createView(),
         ));
     }

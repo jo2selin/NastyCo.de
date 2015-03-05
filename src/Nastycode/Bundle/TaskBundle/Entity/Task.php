@@ -1,3 +1,5 @@
+<?php
+
 namespace Nastycode\Bundle\TaskBundle\Entity;
 
 class Task
@@ -24,3 +26,5 @@ class Task
         $this->dueDate = $dueDate;
     }
 }
+
+?>
