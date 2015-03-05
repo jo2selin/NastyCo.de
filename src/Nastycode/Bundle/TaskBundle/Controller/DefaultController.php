@@ -1,17 +1,14 @@
 <?php
 
-namespace Nastycode\Bundle\TaskBundle\TaskBundle\Controller;
+namespace Nastycode\Bundle\TaskBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
+use Nastycode\Bundle\TaskBundle\Entity\Task;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\Security\Core\SecurityContextInterface;
-use Symfony\Component\Security\Core\Exception\AuthenticationException;
 
 class DefaultController extends Controller
 {
-    public function newAction(Request $request)
+    public function indexAction(Request $request)
     {
         // crée une tâche et lui donne quelques données par défaut pour cet exemple
         $task = new Task();
@@ -24,7 +21,7 @@ class DefaultController extends Controller
             ->add('save', 'submit')
             ->getForm();
 
-        return $this->render('NastycodeBundleTaskBundle:Default:index.html.twig', array(
+        return $this->render('NastycodeTaskBundle:Default:index.html.twig', array(
             'form' => $form->createView(),
         ));
     }
