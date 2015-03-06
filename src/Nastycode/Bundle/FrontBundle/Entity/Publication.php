@@ -4,6 +4,7 @@ namespace Nastycode\Bundle\FrontBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
+
 /**
  * Publication
  *
@@ -77,6 +78,10 @@ class Publication
      */
     private $published = true;
 
+public function __construct() {
+    $this->date=new \DateTime();
+}
+
     /**
      * Get id
      *
@@ -93,9 +98,9 @@ class Publication
      * @param string $member
      * @return Publication
      */
-    public function setMember($member)
+    public function setMember($user)
     {
-        $this->member = $member;
+        $this->member = $user;
 
         return $this;
     }
@@ -107,7 +112,7 @@ class Publication
      */
     public function getMember()
     {
-        return $this->member;
+        return $this->id;
     }
 
     /**
