@@ -20,4 +20,4 @@ nastycode_post_code:
 
 nastycode_form_code:
     path:     /form
-    defaults: { _controller: NastycodeTaskBundle:Default:index }
+    defaults: { _controller: NastycodeTaskBundle:Default:add }

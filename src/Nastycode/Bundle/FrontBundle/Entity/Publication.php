@@ -50,6 +50,13 @@ class Publication
     private $lang;
 
     /**
+     * @var text
+     *
+     * @ORM\Column(name="description", type="text")
+     */
+    private $description;
+
+    /**
      * @var integer
      *
      * @ORM\Column(name="likes", type="integer")
@@ -117,6 +124,30 @@ class Publication
     }
 
     /**
+     * Get description
+     *
+     * @return text 
+     */
+    public function getDescription()
+    {
+        return $this->description;
+    }
+
+
+    /**
+     * Set description
+     *
+     * @param text $description
+     * @return Publication
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
+
+        return $this;
+    }
+
+    /**
      * Get codeNasty
      *
      * @return string 
@@ -125,6 +156,7 @@ class Publication
     {
         return $this->codeNasty;
     }
+
 
     /**
      * Set codeClean
