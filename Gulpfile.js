@@ -50,6 +50,7 @@ gulp.task('script', function() {
         app + '/js/foundation/foundation.js',
         app + '/js/foundation/foundation.dropdown.js',
         app + '/js/foundation/foundation.tab.js',
+        app + '/js/foundation/foundation.reveal.js',
         app + '/js/app.js'
         ])
 
@@ -106,7 +107,7 @@ gulp.task('watch', function() {
 /*
  * build
  */
-gulp.task('build', ['script','images','Sass']);
+gulp.task('build', ['script','images','font','Sass']);
 
 
 gulp.task('default', [

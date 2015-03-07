@@ -8,13 +8,30 @@
 		<div class="row">
 		  	<div class="small-12 columns">
 			  	<div class="infoUser">
-			  		<div class="userPic hide-for-small-only">
-			  			<img src="http://lorempixel.com/150/150/cats/" alt="User Pic">
-			  		</div>
+			  		<a href="#" data-reveal-id="editPicModal">
+				  		<div class="userPic hide-for-small-only">
+				  			<div class="editUserPic"></div>
+				  			<img src="http://lorempixel.com/150/150/cats/" alt="User Pic">
+				  		</div>
+			  		</a>
 			  		<div class="user">
-			  			<h2><a href="">{{ user.username }}</a></h2>
-			  			<p><a href="">{{ user.email }}</a></p>
-			  			<p><a href="">password</a></p>
+			  			<h2><a href="#" data-reveal-id="editInfoModal">{{ user.username }}</a></h2>
+			  			<p><a href="#" data-reveal-id="editInfoModal">{{ user.email }}</a></p>
+			  			<p><a href="#" data-reveal-id="editPasswordModal">&#8226; &#8226; &#8226; &#8226; &#8226; &#8226; </a></p>
+			  		</div>
+			  		<div id="editInfoModal" class="editInfoModal reveal-modal" data-reveal>
+						<h4>Editer mon profil</h4>
+						{{ render(controller('NastycodeUserBundle:Profile:edit')) }}
+						<a class="close-reveal-modal">&#215;</a>
+			  		</div>
+			  		<div id="editPasswordModal" class="editPasswordModal reveal-modal" data-reveal>
+						<h4>Modifier mon mot de passe</h4>
+						{{ render(controller('NastycodeUserBundle:ChangePassword:changePassword')) }}
+						<a class="close-reveal-modal">&#215;</a>
+			  		</div>
+			  		<div id="editPicModal" class="editPicModal reveal-modal" data-reveal>
+						<h4>Modifier photo de profil</h4>
+						<a class="close-reveal-modal">&#215;</a>
 			  		</div>
 			  	</div>
 		  	</div>
@@ -31,7 +48,7 @@
 		<section class="row yellow">
 			<div class="small-12 medium-8 medium-centered columns">
 				<div class="tabs-content">
-					<div class="statPosts content active" id="panelstatPosts">
+					<div class="statPosts content" id="panelstatPosts">
 					 	<h3>Vos nastyCodes</h3>
 					 	<ul>
 					 		<li>
@@ -126,7 +143,7 @@
 			
 		</div>
 		<div class="row">
-			{{ render(controller('NastycodeUserBundle:ChangePassword:changePassword')) }}
+			
 		</div>
 	#}
 	</section>
