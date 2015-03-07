@@ -4,6 +4,7 @@ namespace Nastycode\Bundle\FrontBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
+
 /**
  * Publication
  *
@@ -50,6 +51,13 @@ class Publication
     private $lang;
 
     /**
+     * @var text
+     *
+     * @ORM\Column(name="description", type="text")
+     */
+    private $description;
+
+    /**
      * @var integer
      *
      * @ORM\Column(name="likes", type="integer")
@@ -70,6 +78,10 @@ class Publication
      */
     private $published = true;
 
+public function __construct() {
+    $this->date=new \DateTime();
+}
+
     /**
      * Get id
      *
@@ -86,9 +98,9 @@ class Publication
      * @param string $member
      * @return Publication
      */
-    public function setMember($member)
+    public function setMember($user)
     {
-        $this->member = $member;
+        $this->member = $user;
 
         return $this;
     }
@@ -100,7 +112,7 @@ class Publication
      */
     public function getMember()
     {
-        return $this->member;
+        return $this->id;
     }
 
     /**
@@ -117,6 +129,30 @@ class Publication
     }
 
     /**
+     * Get description
+     *
+     * @return text 
+     */
+    public function getDescription()
+    {
+        return $this->description;
+    }
+
+
+    /**
+     * Set description
+     *
+     * @param text $description
+     * @return Publication
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
+
+        return $this;
+    }
+
+    /**
      * Get codeNasty
      *
      * @return string 
@@ -125,6 +161,7 @@ class Publication
     {
         return $this->codeNasty;
     }
+
 
     /**
      * Set codeClean
