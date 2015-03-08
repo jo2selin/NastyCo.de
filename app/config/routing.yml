@@ -1,7 +1,3 @@
-nastycode_task:
-    resource: "@NastycodeTaskBundle/Resources/config/routing.php"
-    prefix:   /
-
 nasty_code_user:
     resource: "@NastycodeUserBundle/Resources/config/routing.yml"
     prefix:   /
@@ -20,4 +16,4 @@ nastycode_post_code:
 
 nastycode_form_code:
     path:     /form
-    defaults: { _controller: NastycodeTaskBundle:Default:index }
+    defaults: { _controller: NastycodeFrontBundle:Default:add }
