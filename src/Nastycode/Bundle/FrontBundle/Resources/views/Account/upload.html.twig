@@ -1,0 +1,13 @@
+{% if user.pictureName %}
+    <img src="{{ asset(user.getWebPath()) }}">
+{% else %}
+    Pas d'image de profil chargée !
+{% endif %}
+
+<h1>Charger une image de profil</h1>
+
+<form action="{{ path('upload_file') }}" method="post" {{ form_enctype(form) }}>
+    {{ form_widget(form) }}
+
+    <input type="submit" value="Uploader">
+</form>

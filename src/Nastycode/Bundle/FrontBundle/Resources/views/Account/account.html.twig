@@ -1,23 +1,22 @@
 {% extends "::base.html.twig" %}
 {% block body %}
-
 	<section class="fullWidth orange myAccount">
 		{% block menu %}
 			{{ include("NastycodeFrontBundle::menu.html.twig") }}
 		{% endblock %}
 		<div class="row">
-		  	<div class="small-12 columns">
-			  	<div class="infoUser">
-			  		<div class="userPic hide-for-small-only">
-			  			<img src="http://lorempixel.com/150/150/cats/" alt="User Pic">
-			  		</div>
-			  		<div class="user">
-			  			<h2><a href="">{{ user.username }}</a></h2>
-			  			<p><a href="">{{ user.email }}</a></p>
-			  			<p><a href="">password</a></p>
-			  		</div>
-			  	</div>
-		  	</div>
+			<div class="small-12 columns">
+				<div class="infoUser">
+					<div class="userPic hide-for-small-only">
+						<img src="http://lorempixel.com/150/150/cats/" alt="User Pic">
+					</div>
+					<div class="user">
+						<h2><a href="">{{ user.username }}</a></h2>
+						<p><a href="">{{ user.email }}</a></p>
+						<p><a href="">Password</a></p>
+					</div>
+				</div>
+			</div>
 		</div>
 		<div class="row">
 			<div class="small-12 medium-8 medium-centered columns">
@@ -32,31 +31,31 @@
 			<div class="small-12 medium-8 medium-centered columns">
 				<div class="tabs-content">
 					<div class="statPosts content active" id="panelstatPosts">
-					 	<h3>Vos nastyCodes</h3>
-					 	<ul>
-					 		<li>
-					 			<a href="#">
-					 				<div class="userPics">
-					 					<span>2</span>
-					 				</div>
-					 				<div class="detailPost">
-					 					<h4>MonCode1</h4>
-					 					<p>0 commentaire</p>
-					 				</div>
-					 			</a>
-					 		</li>
-					 		<li>
-					 			<a href="#">
-					 				<div class="userPics">
-					 					<span>8</span>
-					 				</div>
-					 				<div class="detailPost">
-						 				<h4>HeyMonCode2</h4>
-						 				<p>1 commentaire</p>
-					 				</div>
-					 			</a>
-					 		</li>
-					 	</ul>
+						<h3>Vos nastyCodes</h3>
+						<ul>
+							<li>
+								<a href="#">
+									<div class="userPics">
+										<span>2</span>
+									</div>
+									<div class="detailPost">
+										<h4>MonCode1</h4>
+										<p>0 commentaire</p>
+									</div>
+								</a>
+							</li>
+							<li>
+								<a href="#">
+									<div class="userPics">
+										<span>8</span>
+									</div>
+									<div class="detailPost">
+										<h4>HeyMonCode2</h4>
+										<p>1 commentaire</p>
+									</div>
+								</a>
+							</li>
+						</ul>
 					</div>
 					<div class="statLikes content" id="panelstatLikes">
 						<h3>nastyCodes que vous avez validés</h3>
@@ -86,39 +85,39 @@
 						</ul>
 					</div>
 					<div class="statComments content" id="panelstatComments">
-					 	<h3>Vous avez récemment commenté:</h3>
-					 	<ul>
-					 		<li class="comments">
-					 			<a href="#">
+						<h3>Vous avez récemment commenté:</h3>
+						<ul>
+							<li class="comments">
+								<a href="#">
 									<div class="userPics" style="background-image: url('http://lorempixel.com/70/70/cats/'); background-repeat: no-repeat;">
-					 					<span>2</span>
-					 				</div>
-					 				<div class="detailPost">
-					 					<h4>COCOde</h4>
-					 					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-					 				</div>
-					 			</a>
-					 		</li>
-					 		<li class="comments">
-					 			<a href="#">
+										<span>2</span>
+									</div>
+									<div class="detailPost">
+										<h4>COCOde</h4>
+										<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+									</div>
+								</a>
+							</li>
+							<li class="comments">
+								<a href="#">
 									<div class="userPics" style="background-image: url('http://lorempixel.com/70/70/cats/'); background-repeat: no-repeat;">
-					 					<span>8</span>
-					 				</div>
-					 				<div class="detailPost">
-						 				<h4>KOde</h4>
-						 				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis quam, magni earum.</p>
-					 				</div>
-					 			</a>
-					 		</li>
-					 	</ul>
+										<span>8</span>
+									</div>
+									<div class="detailPost">
+										<h4>KOde</h4>
+										<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis quam, magni earum.</p>
+									</div>
+								</a>
+							</li>
+						</ul>
 					</div>
 				</div>
 			</div>
 		</section>
-
-
-
-	{#	{% block menu %}
+        <div>
+            {{ render(controller('NastycodeFrontBundle:Account:upload')) }}
+        </div>
+		{#	{% block menu %}
 			{{ include("NastycodeFrontBundle::menu.html.twig") }}
 		{% endblock %}
 		<div class="row text-center">
@@ -128,8 +127,6 @@
 		<div class="row">
 			{{ render(controller('NastycodeUserBundle:ChangePassword:changePassword')) }}
 		</div>
-	#}
+		#}
 	</section>
-
 {% endblock %}
-

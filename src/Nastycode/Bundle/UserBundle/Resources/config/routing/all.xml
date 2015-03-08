@@ -11,7 +11,7 @@
         prefix="/profile" />
     <import
         resource="@NastycodeUserBundle/Resources/config/routing/registration.xml"
-        prefix="/" />
+        prefix="/register" />
     <import
         resource="@NastycodeUserBundle/Resources/config/routing/resetting.xml"
         prefix="/resetting" />

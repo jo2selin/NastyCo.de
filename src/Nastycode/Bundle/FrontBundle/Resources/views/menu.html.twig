@@ -2,14 +2,14 @@
     {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
         <div class="right">
             <div class="connected dropdown" data-dropdown="connected-drop" aria-controls="connected-drop">
-                <div class="icon-user"></div>
+                <img src="http://lorempixel.com/70/70/cats/" class="icon-user" alt="profile picture"/>
                 <p>{{ user.username }}</p>
             </div>
 
             <!-- <button data-dropdown="drop" aria-controls="drop", aria-expanded="false" class="large alert round button dropdown">Dropdown Button</button><br> -->
             <ul id="connected-drop" data-dropdown-content class="f-dropdown" role="menu" aria-hidden="false" aria-autoclose="false" tabindex="-1">
-                <li><a href="#">Mon compte</a></li>
-                <li><a href="#">Ajouter un nastyCode</a></li>
+                <li><a href="{{ path ('nastycode_front_account_account') }}">Mon compte</a></li>
+                <li><a href="{{ path('nastycode_front_posts_posts') }}">Ajouter un nastyCode</a></li>
                 <li>
                     <a href="{{ path('fos_user_security_logout') }}">
                         {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}
@@ -25,7 +25,7 @@
                 <a data-dropdown="drop-connexion" aria-controls="drop-connexion" aria-expanded="false">{{ 'layout.login'|trans({}, 'FOSUserBundle') }}</a>
                 <a data-dropdown="drop-inscription" aria-controls="drop-inscription" aria-expanded="false">{{ 'layout.register'|trans({}, 'FOSUserBundle') }}</a>
                 
-                <div id="drop-connexion" data-dropdown-content class="f-dropdown content" aria-hidden="true" aria-autoclose="false" tabindex="-1">
+                <div id="drop-connexion" da ta-dropdown-content class="f-dropdown content" aria-hidden="true" aria-autoclose="false" tabindex="-1">
                     {{ render(controller('NastycodeUserBundle:Security:login')) }}
                 </div>
                 

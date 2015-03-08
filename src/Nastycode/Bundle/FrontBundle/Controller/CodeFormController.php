@@ -11,6 +11,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Core\SecurityContextInterface;
 use Symfony\Component\Security\Core\Exception\AuthenticationException;
 
+
 class CodeFormController extends Controller
 {
      /**
@@ -27,4 +28,4 @@ class CodeFormController extends Controller
             'form' => $form->createView(),
         ));
     }
-}
+};

@@ -3,7 +3,6 @@ imports:
     - { resource: "security.yml" }
     - { resource: "services.yml" }
     - { resource: "@NastycodeUserBundle/Resources/config/services.yml" }
-    # - { resource: "@NastycodeUserBundle/Resources/config/routing.yml" }
 
 framework:
     secret: "%secret%"
