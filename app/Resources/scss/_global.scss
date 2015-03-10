@@ -1,118 +1,152 @@
 /*
 *    FONTS
 */
-@charset "UTF-8";
+@charset 'UTF-8';
 
 @font-face {
-  font-family: "nastycode";
-  src:url("../font/nastycode.eot");
-  src:url("../font/nastycode.eot?#iefix") format("embedded-opentype"),
-    url("../font/nastycode.woff") format("woff"),
-    url("../font/nastycode.ttf") format("truetype"),
-    url("../font/nastycode.svg#nastycode") format("svg");
-  font-weight: normal;
-  font-style: normal;
+    font-family:'nastycode';
+    src:url('../font/nastycode.eot');
+    src:url('../font/nastycode.eot?#iefix') format('embedded-opentype'),
+    url('../font/nastycode.woff') format('woff'),
+    url('../font/nastycode.ttf') format('truetype'),
+    url('../font/nastycode.svg#nastycode') format('svg');
+    font-weight:normal;
+    font-style:normal;
 }
 
 
 body {
-	background:$snow;
+    background:$snow;
 
-	@include box-sizing();
+    @include box-sizing();
 }
 
 section.fullWidth {
-	width:100%;
-	min-height:90%;
+    width:100%;
+    min-height:90%;
 }
 
 section.orange {
-	background:$primary-color;
-	.button {
-		@include button($button-med, $primary-color, true, false, false, false, darken($primary-color, 10%), $secondary-color, true, $secondary-color);
-	}
-	p {
-		color:$primary-color-dark;
-	}
+	// @include nasty-content("orange");
+    background:$primary-color;
+    .button {
+        @include button($button-med, $primary-color, true, false, false, false, darken($primary-color, 10%), $secondary-color, true, $secondary-color);
+    }
+    p {
+        color:$primary-color-dark;
+    }
 }
 
 section.yellow {
-	background:$secondary-color;
-	.button {
-		@include button($button-med, $secondary-color, true, false, false, false, darken($secondary-color, 10%), $secondary-color, true, $secondary-color);
-	}
-	p {
-		color:$primary-color;
-	}
+    background:$secondary-color;
+    .button {
+        @include button($button-med, $secondary-color, true, false, false, false, darken($secondary-color, 10%), $secondary-color, true, $secondary-color);
+    }
+    p {
+        color:$primary-color;
+    }
 }
 
 section.grey {
-	background:$smoke;
-	.button {
-		@include button($button-med, $smoke, true, false, false, false, darken($smoke, 10%), $jumbo, true, $jumbo);
-	}
-	p {
-		color:$jumbo;
-	}
+    background:$smoke;
+    .button {
+        @include button($button-med, $smoke, true, false, false, false, darken($smoke, 10%), $jumbo, true, $jumbo);
+    }
+    p {
+        color:$jumbo;
+    }
 }
 
 section.darkBlue {
-	background:$quaternary-color;
-	.button {
-		@include button($button-med, $quaternary-color, true, false, false, false, darken($quaternary-color, 10%), $primary-color, true, $primary-color);
-	}
+    background:$quaternary-color;
+    .button {
+        @include button($button-med, $quaternary-color, true, false, false, false, darken($quaternary-color, 10%), $primary-color, true, $primary-color);
+    }
 }
 
 .row.identification {
-	padding: 20px;
-	.not_connected {
-		a {
-			padding:10px;
-			color:$primary-color-dark;
-			border-bottom:solid 5px $primary-color;
+    padding:20px;
+    .headerNastyLogo {
+        text-align:center;
+        img {
+            width:200px;
+            height:60px;
+        }
+    }
+    .discoverNastycode {
+        text-align:center;
+        color:$white;
+        padding:20px 0 0 0;
+        & a {
+            color:inherit;
+            @include single-transition(color);
+            &:before {
+                position:absolute;
+                content:'\e003';
+                font-family:$font-family-nasty;
+                font-size:rem-calc(16);
+                margin-left:-20px;
+            }
+            &:hover{
+            	color: $secondary-color;
+            }
+        }
+    }
+    .right {
+        width:100%;
+        padding:10px 0 0 0;
+        @media #{$medium-up} {
+            width:auto;
+        }
+    }
+    .not_connected {
+        a {
+            padding:10px;
+            color:$primary-color-dark;
+            border-bottom:solid 5px $primary-color;
 
-			@include single-transition(border-bottom-color);
-			&:hover {
-				border-bottom:solid 5px darken($primary-color, 5%);
-			}
-		}
-	}
-	.connected {
-		height:40px;
-		background:darken($primary-color, 10%);
-		cursor: pointer;
-		overflow: hidden;
-		@include dropdown-button(medium, $primary-color);
-		@include single-transition(background-color);
-		&:after{
-		@include single-transition(border-top-color);
-		}
+            @include single-transition(border-bottom-color);
+            &:hover {
+                border-bottom:solid 5px darken($primary-color, 5%);
+            }
+        }
+    }
+    .connected {
+        height:40px;
+        background:darken($primary-color, 10%);
+        cursor:pointer;
+        overflow:hidden;
+        @include dropdown-button(medium, $primary-color);
+        @include single-transition(background-color);
+        &:after {
+            @include single-transition(border-top-color);
+        }
 
-		@include radius(20px);
-		.icon-user {
-			position:absolute;
-			width:30px;
-			height:30px;
-			margin:5px;
-			background:$primary-color;
+        @include radius(20px);
+        .icon-user {
+            position:absolute;
+            width:30px;
+            height:30px;
+            margin:5px;
+            background:$primary-color;
 
-			@include radius(50%);
-		}
-		p{
-			margin-left: 50px;
-			color: $primary-color;
-			font-size: 1.2rem;
-			line-height: 2.6rem;
-			@include single-transition(color);
-		}
-		&:hover{
-			background:darken($primary-color, 14%);
-			p {
-				color: $white;
-			}
-			&:after {
-				border-top-color: $white;
-			}
-		}
-	}
+            @include radius(50%);
+        }
+        p {
+            margin-left:50px;
+            color:$primary-color;
+            font-size:1.2rem;
+            line-height:2.6rem;
+            @include single-transition(color);
+        }
+        &:hover {
+            background:darken($primary-color, 14%);
+            p {
+                color:$white;
+            }
+            &:after {
+                border-top-color:$white;
+            }
+        }
+    }
 }

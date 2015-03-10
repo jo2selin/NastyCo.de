@@ -223,9 +223,10 @@ $base-line-height: 1.5 !default;
 //
 // Create Circle with fixed size
 @mixin nasty-circle($size) {
-  width: $size;
-  height: $size;
+  min-width: $size;
+  min-height: $size;
   border-radius: $size/2;
+
 }
 
 $white         : #FFFFFF !default;
@@ -494,5 +495,16 @@ $cursor-text-value: text !default;
 
     // Make select elements 100% width by default
     select { width: 100%; }
+  }
+}
+
+
+// Define content color based on the current background color 
+@mixin nasty-content($background) {
+  @if $background == orange {
+    $background: $primary-color;
+    $menuColor: $white;
+    $menuColorHover: $secondary-color;
+    $darkColor: $primary-color-dark;
   }
 }

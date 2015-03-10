@@ -36,7 +36,7 @@ doctrine:
         port: ~
         dbname: nastycode
         user: root
-        password: root
+        password: null
         charset: UTF8
     orm:
         auto_generate_proxy_classes: "%kernel.debug%"

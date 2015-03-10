@@ -18,10 +18,21 @@ class PostsController extends Controller
      */
     public function postsAction()
     {
-    	$user = $this->getUser();
+        $user = $this->getUser();
         return $this->render('NastycodeFrontBundle:Posts:posts.html.twig', array(
             'user' => $user
         ));
-    }
-   
+    }  
+
+    /**
+     * @Route("/nastycode")
+     * @Template()
+     */
+    public function postAction()
+    {
+        $user = $this->getUser();
+        return $this->render('NastycodeFrontBundle:Posts:post.html.twig', array(
+            'user' => $user
+        ));
+    }   
 }

@@ -54,7 +54,40 @@ sprite.create({
 				</div>
 			</div>
 			<div class="row comments">
-                {% include 'FOSCommentBundle:Thread:async.html.twig' with {'id': 'foo'} %}
+				<div class="small-12 medium-6 columns">
+					<h4>936 Commentaires</h4>
+					<div class="comment">
+						<div class="userpicComment">
+							<img src="http://lorempixel.com/50/50/cats/" alt="profile picture"/>
+						</div>
+						<div class="userComment">
+							<header>Francky</header>
+							<p>trop cool</p>
+						</div>
+					</div>
+					<div class="comment">
+						<div class="userpicComment">
+							<img src="http://lorempixel.com/50/50/cats/" alt="profile picture"/>
+						</div>
+						<div class="userComment">
+							<header>Vincent</header>
+							<p>Trop des barres, Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos quasi fugiat culpa cumque consequuntur, dolor fugit neque, ipsam.</p>
+						</div>
+					</div>
+					<p class="text-center">
+					<a href="#">voir tous les commentaires</a>
+					</p>	
+				</div>
+				<div class="small-12 medium-6 columns">
+					<h4>Ecrire un commentaire:</h4>
+					<form class="commentForm" action="#">
+						<ul>
+							<li class="commentFormArea"><textarea></textarea></li>
+							<li class="commentFormsubmit"><input type="submit" value="Envoyer"></li>
+						</ul>
+					</form>
+					<p class="text-center">Pour laisser un commentaire, <a href="#">veuillez vous connecter</a>.</p>
+				</div>
 			</div>
 		</article>
 
