@@ -15,7 +15,7 @@ use Symfony\Component\Security\Core\Exception\AuthenticationException;
 class CodeFormController extends Controller
 {
      /**
-     * @Route("/nastycodes")
+     * @Route("/add")
      * @Template()
      */
     public function codeformAction()
