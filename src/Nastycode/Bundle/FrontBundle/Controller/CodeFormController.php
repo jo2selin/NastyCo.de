@@ -11,11 +11,10 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Core\SecurityContextInterface;
 use Symfony\Component\Security\Core\Exception\AuthenticationException;
 
-
 class CodeFormController extends Controller
 {
      /**
-     * @Route("/nastycodes")
+     * @Route("/postCode")
      * @Template()
      */
     public function codeformAction()

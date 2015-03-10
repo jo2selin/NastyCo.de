@@ -39,6 +39,7 @@ section.sectionPosts {
                 background:$tertiary-color;
                 max-width:80%;
                 margin:auto;
+                margin-bottom: 20px;
                 @media #{$medium-up} {
                     max-width:100%;
                 }
@@ -71,6 +72,10 @@ section.sectionPosts {
                     border:none;
                     background:$quaternary-color;
                     overflow-x:scroll;
+
+                    &.fullSize{ //For the single page code
+                        max-height:1200px;
+                    }
                 }
             }
         }
@@ -111,17 +116,22 @@ section.sectionPosts {
                 display:flex;
                 li {
                     list-style:none;
-                    display:table-cell;
+                    display:inline-block;
                     vertical-align:middle;
-                    width:100%;
-                    .commentFormArea {
+                    
+                    &.commentFormArea {
+                        width: 100%;
+                        textarea{
                         margin:0;
                         vertical-align:middle;
                         height:50px;
                         width:100%;
-                        resize: vertical;
+                        resize:vertical;
+                        }
                     }
-                    .commentFormsubmit {
+                    &.commentFormsubmit {
+                        width: 130px;
+                        input{
                         vertical-align:middle;
                         // opacity: 0;
                         height:50px;
@@ -132,6 +142,7 @@ section.sectionPosts {
                         padding:0 10px;
                         color:$white;
                         box-shadow:none;
+                        }
                     }
                 }
             }
