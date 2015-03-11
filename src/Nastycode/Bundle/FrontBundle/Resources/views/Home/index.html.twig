@@ -9,19 +9,102 @@
 			<h1>
 				<img src="#" alt="NastyCo.de logo">
 			</h1>
-			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-		</div>
-		<div class="row">
-			<div class="small-3 small-centered columns">
-				<p class="text-center">
-					<a href="{{ path('nastycode_front_posts_posts') }}" class="button">Découvrir</a>
-				</p>
-			</div>
+			<h2>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</h2>
 		</div>
 	</section>
-	<section class="fullWidth darkBlue">
-		<a href="{{ path('nastycode_front_posts_posts') }}" class="button">Découvrir</a>
-		<a href="#" class="button">Publier</a>
+	<section class="fullWidth darkBlue homeExemple">
+		<div class="row">
+			<div class="small-12 medium-8 small-centered columns">
+				<h3>Comment ça marche ?</h3>
+				<p>nastyCo.de vous permet de partager les codes les plus sales que vous rencontrez a travers vos différents projet web.</p>
+				<p>Que ce soit le stagiaire, une équipe à l'autre bout du monde ou votre Lead Dev, partagez leurs nastyCodes sur le site, proposez une correction et laissez les internautes donner leurs avis !</p>
+			</div>
+		</div>
+		<article>
+			<div class="row">
+				<div class="info-author-code small-12 columns">
+					<div class="picUser">
+						<img src="http://lorempixel.com/70/70/cats/" alt="profile picture"/>
+					</div>
+					<div class="descrCode">
+						<h2><a href="#">K.O code</a> <small>par John</small></h2>
+						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quasi accusantium a similique ipsum repellat nulla dicta, expedita officia.</p>
+					</div>
+				</div>
+			</div>
+			<div class="row scriptsNastycode">
+				<div class="small-12 medium-6 columns">
+					<section>
+						<header>
+							<label>JS</label>
+							<h5>K.O code.nasty</h5>
+						</header>
+						<code class="language-javascript">
+var sprite = require('css-sprite');
+sprite.create({
+	src: ['./src/img/*.png'],
+	out: './dist/img'
+	name: 'sprites',
+	style: './dist/scss/_sprites.scss',
+	cssPath: '../img',
+	processor: 'scss'
+}, function () {
+	console.log('done');
+});
+						</code>
+					</section>
+				</div>
+				<div class="small-12 medium-6 columns">
+					<section>
+						<header>
+							<label>JS</label>
+							<h5>John propose cette correction</h5>
+						</header>
+						<code class="language-javascript">
+//Au moins
+//une petite
+//explication ?
+						</code>
+					</section>
+				</div>
+			</div>
+			<div class="row comments">
+				<div class="small-12 medium-6 columns">
+					<h4>936 Commentaires</h4>
+					<div class="comment">
+						<div class="userpicComment">
+							<img src="http://lorempixel.com/50/50/cats/" alt="profile picture"/>
+						</div>
+						<div class="userComment">
+							<header>Francky</header>
+							<p>trop cool</p>
+						</div>
+					</div>
+					<div class="comment">
+						<div class="userpicComment">
+							<img src="http://lorempixel.com/50/50/cats/" alt="profile picture"/>
+						</div>
+						<div class="userComment">
+							<header>Vincent</header>
+							<p>Trop des barres, Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos quasi fugiat culpa cumque consequuntur, dolor fugit neque, ipsam.</p>
+						</div>
+					</div>
+					<p class="text-center">
+					<a href="#">voir tous les commentaires</a>
+					</p>	
+				</div>
+				<div class="small-12 medium-6 columns">
+					<h4>Ecrire un commentaire:</h4>
+					<form class="commentForm" action="#">
+						<ul>
+							<li class="commentFormArea"><textarea></textarea></li>
+							<li class="commentFormsubmit"><input type="submit" value="Envoyer"></li>
+						</ul>
+					</form>
+					<p class="text-center">Pour laisser un commentaire, <a href="#">veuillez vous connecter</a>.</p>
+				</div>
+			</div>
+		</article>
 	</section>
 
 {% endblock %}
