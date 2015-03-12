@@ -19,11 +19,11 @@ class CodeFormController extends Controller
      */
     public function codeformAction()
     {
-        $form = $this->createFormBuilder($task)
+        $form = $this->createFormBuilder()
             ->add('titre', 'text')
             ->getForm();
 
-        return $this->render('NastycodeFrontBundle:CodeForm:codeform.html.twig', array(
+        return $this->render('NastycodeFrontBundle:CodeForm:add.html.twig', array(
             'form' => $form->createView(),
         ));
     }

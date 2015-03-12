@@ -23,3 +23,11 @@ web/css
 app/dist
 
 # Glup
+src/Nastycode/Bundle/TaskBundle/Resources/config/routing.php.BACKUP.1626.php
+src/Nastycode/Bundle/TaskBundle/Resources/config/routing.php.BACKUP.1750.php
+src/Nastycode/Bundle/TaskBundle/Resources/config/routing.php.BASE.1626.php
+src/Nastycode/Bundle/TaskBundle/Resources/config/routing.php.BASE.1750.php
+src/Nastycode/Bundle/TaskBundle/Resources/config/routing.php.LOCAL.1626.php
+src/Nastycode/Bundle/TaskBundle/Resources/config/routing.php.LOCAL.1750.php
+src/Nastycode/Bundle/TaskBundle/Resources/config/routing.php.REMOTE.1626.php
+src/Nastycode/Bundle/TaskBundle/Resources/config/routing.php.REMOTE.1750.php

@@ -5,6 +5,7 @@ namespace Nastycode\Bundle\FrontBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Nastycode\Bundle\UserBundle\Form\IdentityPictureType;
 
@@ -41,7 +42,7 @@ class AccountController extends Controller
             $em->persist($user);
             $em->flush();
 
-            $this->redirect($this->generateUrl('nastycode_front_account_account'));
+            return new RedirectResponse($this->generateUrl('nastycode_front_account_account'));
         }
 
         return $this->render('NastycodeFrontBundle:Account:upload.html.twig',
