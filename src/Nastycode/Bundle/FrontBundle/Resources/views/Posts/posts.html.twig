@@ -80,13 +80,18 @@ sprite.create({
 				</div>
 				<div class="small-12 medium-6 columns">
 					<h4>Ecrire un commentaire:</h4>
-					<form class="commentForm" action="#">
-						<ul>
-							<li class="commentFormArea"><textarea></textarea></li>
-							<li class="commentFormsubmit"><input type="submit" value="Envoyer"></li>
-						</ul>
-					</form>
-					<p class="text-center">Pour laisser un commentaire, <a href="#">veuillez vous connecter</a>.</p>
+                    {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                        <form class="commentForm" action="#">
+                            <ul>
+                                <li class="commentFormArea"><textarea></textarea></li>
+                                <li class="commentFormsubmit"><input type="submit" value="Envoyer"></li>
+                            </ul>
+                        </form>
+                    {% else %}
+                        <p class="text-center">Veuillez vous connecter pour laisser un commentaire.</p>
+                        <p class="text-center">Vous n'avez pas de compte ? <a href="{{ path('fos_user_registration_register') }}">Inscrivez-vous !</a></p>
+                        {{ render(controller('NastycodeUserBundle:Security:login')) }}
+                    {% endif %}
 				</div>
 			</div>
 		</article>
@@ -169,9 +174,21 @@ $database->connect();
 					Soyez le premier à commenter ce nastyCode.
 					</p>	
 				</div>
-				<div class="small-12 medium-6 columns">
-					<p class="text-center">Pour laisser un commentaire, <a href="#">veuillez vous connecter</a>.</p>
-				</div>
+                <div class="small-12 medium-6 columns">
+                    <h4>Ecrire un commentaire:</h4>
+                    {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                        <form class="commentForm" action="#">
+                            <ul>
+                                <li class="commentFormArea"><textarea></textarea></li>
+                                <li class="commentFormsubmit"><input type="submit" value="Envoyer"></li>
+                            </ul>
+                        </form>
+                    {% else %}
+                        <p class="text-center">Veuillez vous connecter pour laisser un commentaire.</p>
+                        <p class="text-center">Vous n'avez pas de compte ? <a href="{{ path('fos_user_registration_register') }}">Inscrivez-vous !</a></p>
+                        {{ render(controller('NastycodeUserBundle:Security:login')) }}
+                    {% endif %}
+                </div>
 			</div>
 		</article>
 
