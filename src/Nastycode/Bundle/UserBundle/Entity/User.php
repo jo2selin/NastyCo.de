@@ -48,16 +48,16 @@ class User extends BaseUser
 
     protected  function realPath()
     {
-        return 'NastyCo.de/web/uploads/pictures/';
+        return 'NastyCo.de/web/uploads/pictures/nastypic_'.$this->id.'.';
     }
 
     public function uploadProfilePicture()
     {
-        if ($this->pictureName) {
-            if ($file = $this->realPath()) {
-                unlink($file);
-            }
-        }
+        //if ($this->pictureName) {
+           // if ($file = $this->realPath()) {
+           //     unlink($file);
+          //  }
+        //}
 
         $this->file->move($this->getUploadRootDir(), $this->pictureName = $filename = ('nastypic_'.$this->id.'.'.$this->file->getClientOriginalExtension()));
         $this->pictureName = $filename = ('nastypic_'.$this->id.'.'.$this->file->getClientOriginalExtension());

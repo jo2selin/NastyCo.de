@@ -51,7 +51,8 @@ gulp.task('script', function() {
         app + '/js/foundation/foundation.dropdown.js',
         app + '/js/foundation/foundation.tab.js',
         app + '/js/foundation/foundation.reveal.js',
-        app + '/js/app.js'
+        app + '/js/app.js',
+        app + 'js/comments.js'
         ])
 
         .pipe($.concat('script.js'))
