@@ -33,10 +33,10 @@ doctrine:
     dbal:
         driver: pdo_mysql
         host: localhost
-        port: ~
+        port: 8889
         dbname: nastycode
         user: root
-        password: null
+        password: root
         charset: UTF8
     orm:
         auto_generate_proxy_classes: "%kernel.debug%"
@@ -62,8 +62,3 @@ fos_comment:
         model:
             comment: Nastycode\Bundle\UserBundle\Entity\Comment
             thread: Nastycode\Bundle\UserBundle\Entity\Thread
-
-assetic:
-    debug:          %kernel.debug%
-    use_controller: false
-    bundles: [ "FOSCommentBundle" ]

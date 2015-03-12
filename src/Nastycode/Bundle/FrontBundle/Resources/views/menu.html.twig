@@ -11,6 +11,11 @@
             <div class="right">
                 <div class="connected dropdown" data-dropdown="connected-drop" aria-controls="connected-drop">
                     <img src="http://lorempixel.com/70/70/cats/" class="icon-user" alt="profile picture"/>
+                    {% if user.pictureName %}
+                        <img src="{{ asset(user.getWebPath()) }}" class="icon-user" alt="profile picture">
+                    {% else %}
+                        <img src="http://lorempixel.com/70/70/cats/" class="icon-user" alt="profile picture">
+                    {% endif %}
                     <p>{{ user.username }}</p>
                 </div>
 
@@ -33,7 +38,7 @@
                     <a data-dropdown="drop-connexion" aria-controls="drop-connexion" aria-expanded="false">{{ 'layout.login'|trans({}, 'FOSUserBundle') }}</a>
                     <a data-dropdown="drop-inscription" aria-controls="drop-inscription" aria-expanded="false">{{ 'layout.register'|trans({}, 'FOSUserBundle') }}</a>
                     
-                    <div id="drop-connexion" da ta-dropdown-content class="f-dropdown content" aria-hidden="true" aria-autoclose="false" tabindex="-1">
+                    <div id="drop-connexion" data-dropdown-content class="f-dropdown content" aria-hidden="true" aria-autoclose="false" tabindex="-1">
                         {{ render(controller('NastycodeUserBundle:Security:login')) }}
                     </div>
                     

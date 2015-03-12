@@ -1,10 +1,8 @@
 {% if user.pictureName %}
-    <img src="{{ asset(user.getWebPath()) }}">
+    <img src="{{ asset(user.getWebPath()) }}" alt="profile picture">
 {% else %}
-    Pas d'image de profil chargée !
+    <img src="http://lorempixel.com/70/70/cats/" alt="profile picture">
 {% endif %}
-
-<h1>Charger une image de profil</h1>
 
 <form action="{{ path('upload_file') }}" method="post" {{ form_enctype(form) }}>
     {{ form_widget(form) }}
