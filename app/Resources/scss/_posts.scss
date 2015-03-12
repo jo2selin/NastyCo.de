@@ -1,5 +1,6 @@
-section.sectionPosts {
-    background:url('../img/back_posts.png');
+section.sectionPosts,
+section.homeExemple {
+    background-image:url('../img/back_posts.png');
     article {
         margin:30px 0;
         .info-author-code {
@@ -146,6 +147,22 @@ section.sectionPosts {
                     }
                 }
             }
+        }
+    }
+}
+
+
+section.homeExemple{
+    background-image: none;
+    &:after{
+        background-image:url('../img/back_posts.png');
+        opacity: 0.5;
+        position: absolute;
+         z-index: -1; 
+    }
+    article .scriptsNastycode{
+        code{
+            background: darken($quaternary-color, 5%)!important;
         }
     }
 }

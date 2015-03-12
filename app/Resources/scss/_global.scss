@@ -23,7 +23,7 @@ body {
 
 section.fullWidth {
     width:100%;
-    min-height:90%;
+    min-height:80%;
 }
 
 section.orange {
@@ -58,9 +58,17 @@ section.grey {
 }
 
 section.darkBlue {
-    background:$quaternary-color;
+    background-color:$quaternary-color;
+    padding: 30px 0;
     .button {
         @include button($button-med, $quaternary-color, true, false, false, false, darken($quaternary-color, 10%), $primary-color, true, $primary-color);
+        display: inline-block;
+    }
+    h3{
+        color: lighten($tertiary-color, 40%);
+    }
+    p{
+        color: lighten($tertiary-color, 30%);
     }
 }
 
