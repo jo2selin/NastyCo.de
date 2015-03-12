@@ -225,6 +225,8 @@ $base-line-height: 1.5 !default;
 @mixin nasty-circle($size) {
   min-width: $size;
   min-height: $size;
+  width: $size;
+  height: $size;
   border-radius: $size/2;
 
 }
