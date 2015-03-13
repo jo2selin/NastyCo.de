@@ -14,7 +14,7 @@
                             {% if user.pictureName %}
                                 <img src="{{ asset(user.getWebPath()) }}" alt="profile picture">
                             {% else %}
-                                <img src="http://lorempixel.com/70/70/cats/" alt="profile picture">
+                                <img src="{{ asset('bundles/nastycodefront/img/userpic.png') }}" alt="profile picture">
                             {% endif %}
 				  		</div>
 			  		</a>
@@ -34,7 +34,7 @@
 						<a class="close-reveal-modal">&#215;</a>
 			  		</div>
 			  		<div id="editPicModal" class="editPicModal reveal-modal" data-reveal>
-						<h4>Modifier photo de profil</h4>
+						<h4>Modifiez votre image de profil</h4>
                         <div>
                             {{ render(controller('NastycodeFrontBundle:Account:upload')) }}
                         </div>

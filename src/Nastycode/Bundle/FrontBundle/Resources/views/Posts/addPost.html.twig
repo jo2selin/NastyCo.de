@@ -1,0 +1,47 @@
+{% extends "::base.html.twig" %}
+{% block body %}
+
+	<section class="fullWidth grey sectionAddPost">
+		{% block menu %}
+			{{ include("NastycodeFrontBundle::menu.html.twig") }}
+		{% endblock %}
+		<article>
+			<form>
+			  <div class="row">
+			    <div class="large-12 columns">
+			      <label>Choisissez un langage
+			        <select>
+			          <option value="JS">JS</option>
+			          <option value="PHP">PHP</option>
+			          <option value="HTML">HTML</option>
+			          <option value="CSS">CSS</option>
+			        </select>
+			      </label>
+			    </div>
+			  </div>
+			  <div class="row">
+			    <div class="large-12 columns">
+			      <label>Desciption de votre nastyCode
+			        <textarea placeholder="small-12.columns">Qui a écris ce code, dans quel contexte...</textarea>
+			      </label>
+			    </div>
+			  </div>
+			  <div class="row">
+			    <div class="large-12 columns">
+			      <label>Votre nastyCode
+			        <textarea placeholder="small-12.columns">Pour une meilleure lisibilté indentez correctement votre nastyCode.</textarea>
+			      </label>
+			    </div>
+			  </div>
+			  <div class="row">
+			    <div class="large-12 columns">
+			      <label>Proposez une correction de votre nastyCode
+			        <textarea placeholder="small-12.columns">//Et vous ? vous l'auriez codé comment ? <br/>// Vous pouvez aussi ajouter des commentaires</textarea>
+			      </label>
+			    </div>
+			  </div>
+			</form>
+		</article>
+	</section>
+{% endblock %}
+
