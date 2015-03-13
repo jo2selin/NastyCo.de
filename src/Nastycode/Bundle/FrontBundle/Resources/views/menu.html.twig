@@ -10,11 +10,10 @@
         <div class="small-12 medium-4 columns">
             <div class="right">
                 <div class="connected dropdown" data-dropdown="connected-drop" aria-controls="connected-drop">
-                    <img src="http://lorempixel.com/70/70/cats/" class="icon-user" alt="profile picture"/>
-                    {% if user.pictureName %}
+                   {% if user.pictureName %}
                         <img src="{{ asset(user.getWebPath()) }}" class="icon-user" alt="profile picture">
                     {% else %}
-                        <img src="http://lorempixel.com/70/70/cats/" class="icon-user" alt="profile picture">
+                        <img src="{{ asset('bundles/nastycodefront/img/userpic.png') }}" class="icon-user" alt="profile picture">
                     {% endif %}
                     <p>{{ user.username }}</p>
                 </div>

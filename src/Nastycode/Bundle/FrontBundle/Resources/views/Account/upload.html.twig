@@ -1,7 +1,7 @@
 {% if user.pictureName %}
     <img src="{{ asset(user.getWebPath()) }}" alt="profile picture">
 {% else %}
-    <img src="http://lorempixel.com/70/70/cats/" alt="profile picture">
+    <img src="{{ asset('bundles/nastycodefront/img/userpic.png') }}" alt="profile picture">
 {% endif %}
 
 <form action="{{ path('upload_file') }}" method="post" {{ form_enctype(form) }}>
