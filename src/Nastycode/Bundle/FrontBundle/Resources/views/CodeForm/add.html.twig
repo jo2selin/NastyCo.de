@@ -1,6 +1,6 @@
 {% extends "::base.html.twig" %}
 {% block body %}
-    <h3>Postez un code sale !</h3>
+    <h3>Postez un code sale {{ app.security.getToken().getUser().getUsername() }} !</h3>
     {{ form(form) }}
 
 {% endblock %}

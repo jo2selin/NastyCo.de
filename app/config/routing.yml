@@ -10,16 +10,10 @@ nastycode_front:
 fos_user:
     resource: "@NastycodeUserBundle/Resources/config/routing/all.xml"
 
-fos_comment_api:
-    type: rest
-    resource: "@FOSCommentBundle/Resources/config/routing.yml"
-    prefix: /api
-    defaults: { _format: html }
-
 nastycode_post_code:
     path:     /post_code
     defaults: { _controller: NastycodeFrontBundle:Posts:posts }
 
 nastycode_form_code:
     path:     /form
-    defaults: { _controller: NastycodeFrontBundle:Default:add }
+    defaults: { _controller: NastycodeFrontBundle:CodeForm:add }
