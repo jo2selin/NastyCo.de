@@ -35,14 +35,22 @@ class PostsController extends Controller
 
 
     /**
-     * @Route("/nastycode")
+     * @Route("/nastycode/{id}")
      * @Template()
      */
     public function postAction()
     {
+        $repository = $this
+            ->getDoctrine()
+            ->getManager()
+            ->getRepository('NastycodeFrontBundle:Publication')
+        ;
+        $posts = $repository->findAll();
+
         $user = $this->getUser();
         return $this->render('NastycodeFrontBundle:Posts:post.html.twig', array(
-            'user' => $user
+            'user' => $user,
+            'posts' => $posts,
         ));
     }   
 }
