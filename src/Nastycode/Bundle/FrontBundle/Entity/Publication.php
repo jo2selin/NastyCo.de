@@ -27,9 +27,9 @@ class Publication
     /**
      * @var string
      *
-     * @ORM\Column(name="member", type="string", length=255)
+     * @ORM\Column(name="username", type="string", length=255)
      */
-    private $member;
+    private $username;
 
     /**
      * @var string
@@ -164,6 +164,22 @@ class Publication
         return $this->codeNasty;
     }
 
+    public function getUsername()
+    {
+        return $this->username;
+    }
+
+    /**
+    * Set Username
+    *
+    * @return string
+    */
+    public function setUsername($username)
+    {
+        $this->username = $username;
+
+        return $this;
+    }
 
     /**
      * Set codeClean

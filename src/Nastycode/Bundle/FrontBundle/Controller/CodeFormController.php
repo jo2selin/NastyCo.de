@@ -22,9 +22,9 @@ class CodeFormController extends Controller
     {
         // On crée un objet Advert
         $publication = new Publication();
-        $user = $this->getUser();
 
         $form = $this->get('form.factory')->createBuilder('form', $publication)
+            ->add('username',     'text')
             ->add('description',  'textarea')
             ->add('codenasty',    'textarea')
             ->add('codeclean',    'textarea')
@@ -58,7 +58,7 @@ class CodeFormController extends Controller
         // - Soit la requête est de type GET, donc le visiteur vient d'arriver sur la page et veut voir le formulaire
         // - Soit la requête est de type POST, mais le formulaire contient des valeurs invalides, donc on l'affiche de nouveau
         return $this->render('NastycodeFrontBundle:CodeForm:add.html.twig', array(
-            'member' => $user,
+            // 'username' => $username,
             'form' => $form->createView(),
         ));
     }
