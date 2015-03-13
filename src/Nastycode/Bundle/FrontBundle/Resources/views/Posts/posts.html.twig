@@ -6,16 +6,15 @@
 			{{ include("NastycodeFrontBundle::menu.html.twig") }}
 		{% endblock %}
 		<article>
-            {% for post in posts %}
-
+            {% for post in posts | limit %}
                 <div class="row">
                     <div class="info-author-code small-12 columns">
                         <div class="picUser">
                             <img src="http://lorempixel.com/70/70/cats/" alt="profile picture"/>
                         </div>
                         <div class="descrCode">
-                            <h2><a href="#">K.O code</a> <small>par John</small></h2>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quasi accusantium a similique ipsum repellat nulla dicta, expedita officia.</p>
+                            <h2><a href="#">K.O code</a> <small>par {{ post.member }}</small></h2>
+                            <p>{{ post.description }}</p>
                         </div>
                     </div>
                 </div>
@@ -75,111 +74,13 @@
                                 </ul>
                             </form>
                         {% else %}
-                            <p class="text-center">Veuillez vous connecter pour laisser un commentaire.</p>
+                            <p class="text-center">Pour poster un commentaire, <a href="{{ path('fos_user_security_login') }}">veuillez vous connecter</a>.</p>
                             <p class="text-center">Vous n'avez pas de compte ? <a href="{{ path('fos_user_registration_register') }}">Inscrivez-vous !</a></p>
-                            {{ render(controller('NastycodeUserBundle:Security:login')) }}
                         {% endif %}
                     </div>
                 </div>
             {% endfor %}
 		</article>
-
-		<article>
-			<div class="row">
-				<div class="info-author-code small-12 columns">
-					<div class="picUser">
-						<img src="http://lorempixel.com/70/70/" alt="profile picture"/>
-					</div>
-					<div class="descrCode">
-						<h2><a href="#">top</a> <small>par John</small></h2>
-						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos in neque cumque itaque quia deleniti, possimus, praesentium aliquid ab ratione voluptates tempora, voluptatibus. Suscipit ipsam itaque corrupti debitis cum repellat laboriosam officiis!</p>
-					</div>
-				</div>
-			</div>
-			<div class="row scriptsNastycode">
-				<div class="small-12 medium-6 columns">
-					<section>
-						<header>
-							<label>PHP</label>
-							<h5>top.nasty</h5>
-						</header>
-						<code class="language-php">
-// cet escroc de stagiaire...
-class Database  
-{ 
-    var $sel; 
-    var $con;  
-     
-    function __construct() 
-    { 
-        $this->connect(); 
-    } 
-    function connect() 
-    { 
-        $this->con = mysql_connect("","","") or die(mysql_error()); 
-        $this->sel = mysql_select_db("") or die(mysql_error()); 
-    } 
-     
-    function close() 
-    { 
-        if(isset($this->connect)) 
-        { 
-            mysql_close($this->connect); 
-            unset($this->connect); 
-        } 
-    } 
-     
-    function query($res) 
-    { 
-      mysql_query($res) or die(mysql_error()); 
-    } 
-} 
-
-
-$database = new Database; 
-$database->connect(); 
-						</code>
-					</section>
-				</div>
-				<div class="small-12 medium-6 columns">
-					<section>
-						<header>
-							<label>PHP</label>
-							<h5>John propose cette correction</h5>
-						</header>
-						<code class="language-php">
-//Au moins
-//une petite
-//explication ?
-						</code>
-					</section>
-				</div>
-			</div>
-			<div class="row comments">
-				<div class="small-12 medium-6 columns">
-					<h4>0 Commentaires</h4>
-					<p class="text-center">
-					Soyez le premier à commenter ce nastyCode.
-					</p>	
-				</div>
-                <div class="small-12 medium-6 columns">
-                    <h4>Ecrire un commentaire:</h4>
-                    {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-                        <form class="commentForm" action="#">
-                            <ul>
-                                <li class="commentFormArea"><textarea></textarea></li>
-                                <li class="commentFormsubmit"><input type="submit" value="Envoyer"></li>
-                            </ul>
-                        </form>
-                    {% else %}
-                        <p class="text-center">Veuillez vous connecter pour laisser un commentaire.</p>
-                        <p class="text-center">Vous n'avez pas de compte ? <a href="{{ path('fos_user_registration_register') }}">Inscrivez-vous !</a></p>
-                        {{ render(controller('NastycodeUserBundle:Security:login')) }}
-                    {% endif %}
-                </div>
-			</div>
-		</article>
-
 	</section>
 
 {% endblock %}
