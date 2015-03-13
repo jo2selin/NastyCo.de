@@ -10,6 +10,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Core\SecurityContextInterface;
 use Symfony\Component\Security\Core\Exception\AuthenticationException;
+use Nastycode\Bundle\FrontBundle\Entity\Publication;
 
 class CodeFormController extends Controller
 {
@@ -17,45 +18,50 @@ class CodeFormController extends Controller
      * @Route("/postCode")
      * @Template()
      */
-    public function codeformAction()
+    public function addAction(Request $request)
     {
-        $form = $this->createFormBuilder()
-            ->add('NastyCode', 'textarea', array(
-                'required' => true,
-            ))
-            ->add('CleanCode', 'textarea')
-            ->add('Lang', 'choice', array(
-               'choices' => array('HTML' => 'HTML', 'CSS' => 'CSS', 'SASS' => 'SASS', 'JS' => 'JS', 'PHP' => 'PHP', 'PYTHON' => 'PYTHON', 'RUBY' => 'RUBY'), 'required' => true,
-            ))
-            ->add('Description', 'textarea', array(
-                'required' => true,
-            ))
-            ->getForm();
+        // On crée un objet Advert
+        $publication = new Publication();
+        $user = $this->getUser();
 
+        $form = $this->get('form.factory')->createBuilder('form', $publication)
+            ->add('description',  'textarea')
+            ->add('codenasty',    'textarea')
+            ->add('codeclean',    'textarea')
+            ->add('likes',        'checkbox')
+            ->add('lang',         'choice',        array(
+                'choices'   => array('html' => 'HTML', 'css' => 'CSS', 'php' => 'PHP', 'JS' => 'JavaScript'),
+                'required'  => false,))
+            ->add('save',      'submit')
+            ->getForm()
+        ;
+
+        // On fait le lien Requête <-> Formulaire
+        // À partir de maintenant, la variable $advert contient les valeurs entrées dans le formulaire par le visiteur
+        $form->handleRequest($request);
+
+        // On vérifie que les valeurs entrées sont correctes
+        // (Nous verrons la validation des objets en détail dans le prochain chapitre)
+        if ($form->isValid()) {
+            // On l'enregistre notre objet $advert dans la base de données, par exemple
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($publication);
+            $em->flush();
+
+            $request->getSession()->getFlashBag()->add('notice', 'Annonce bien enregistrée.');
+
+            // On redirige vers la page de visualisation de l'annonce nouvellement créée
+            return $this->redirect($this->generateUrl('nastycode_form_code', array('id' => $publication->getId())));
+        }
+
+        // À ce stade, le formulaire n'est pas valide car :
+        // - Soit la requête est de type GET, donc le visiteur vient d'arriver sur la page et veut voir le formulaire
+        // - Soit la requête est de type POST, mais le formulaire contient des valeurs invalides, donc on l'affiche de nouveau
         return $this->render('NastycodeFrontBundle:CodeForm:add.html.twig', array(
+            'member' => $user,
             'form' => $form->createView(),
         ));
     }
 
-    /**
-     * @Route("/postCode2", name="post_code")
-     * @Template()
-     */
-    public function postcodeAction()
-    {
-        if ($form->isValid()) {
-            $code = $this->getPublication();
 
-            $form->handleRequest($request);
-
-            $em = $this->getDoctrine()->getEntityManager();
-
-            $code->sendCode();
-
-            $em->persist($code);
-            $em->flush();
-
-            return new RedirectResponse($this->generateUrl('nastycode_front_posts_posts'));
-        }
-    }
 };

@@ -1,13 +1,6 @@
 {% extends "::base.html.twig" %}
 {% block body %}
     <h3>Postez un code sale !</h3>
+    {{ form(form) }}
 
-    <form action="{{ path('post_code') }}" method="post" {{ form_enctype(form) }}>
-        {{ form_widget(form.NastyCode) }}
-        {{ form_widget(form.CleanCode) }}
-        {{ form_widget(form.Lang) }}    
-        {{ form_widget(form.Description) }}
-
-        <input type="submit" value="Envoyer">
-    </form>
 {% endblock %}
