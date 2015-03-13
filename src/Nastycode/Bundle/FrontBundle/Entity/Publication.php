@@ -71,7 +71,7 @@ class Publication
      *
      * @ORM\Column(name="likes", type="integer")
      */
-    private $likes;
+    private $likes = 0;
 
     /**
      * @var \DateTime

@@ -16,4 +16,4 @@ nastycode_post_code:
 
 nastycode_form_code:
     path:     /form
-    defaults: { _controller: NastycodeFrontBundle:Default:add }
+    defaults: { _controller: NastycodeFrontBundle:CodeForm:add }
