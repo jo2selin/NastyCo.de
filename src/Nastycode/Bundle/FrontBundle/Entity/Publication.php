@@ -3,6 +3,8 @@
 namespace Nastycode\Bundle\FrontBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\HttpFoundation\File;
 
 
 /**
@@ -78,9 +80,9 @@ class Publication
      */
     private $published = true;
 
-public function __construct() {
-    $this->date=new \DateTime();
-}
+    public function __construct() {
+        $this->date=new \DateTime();
+    }
 
     /**
      * Get id

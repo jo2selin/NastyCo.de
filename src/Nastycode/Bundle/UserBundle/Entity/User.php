@@ -48,7 +48,7 @@ class User extends BaseUser
 
     protected  function realPath()
     {
-        return 'NastyCo.de/web/uploads/pictures/';
+        return __DIR__.'/../../../../../web/uploads/pictures/nastypic_'.$this->id.'.jpg';
     }
 
     public function uploadProfilePicture()
