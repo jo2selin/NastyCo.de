@@ -55,10 +55,3 @@ fos_user:
     db_driver: orm
     firewall_name: main
     user_class: Nastycode\Bundle\UserBundle\Entity\User
-
-fos_comment:
-    db_driver: orm
-    class:
-        model:
-            comment: Nastycode\Bundle\UserBundle\Entity\Comment
-            thread: Nastycode\Bundle\UserBundle\Entity\Thread
