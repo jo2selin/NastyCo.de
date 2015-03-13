@@ -31,6 +31,13 @@ class Publication
      */
     private $username;
 
+ /**
+     * @var string
+     *
+     * @ORM\Column(name="title", type="text")
+     */
+    private $title;
+
     /**
      * @var string
      *
@@ -294,5 +301,28 @@ class Publication
     public function getPublished()
     {
         return $this->published;
+    }
+
+    /**
+     * Set title
+     *
+     * @param string $title
+     * @return Publication
+     */
+    public function setTitle($title)
+    {
+        $this->title = $title;
+
+        return $this;
+    }
+
+    /**
+     * Get title
+     *
+     * @return string 
+     */
+    public function getTitle()
+    {
+        return $this->title;
     }
 }

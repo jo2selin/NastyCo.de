@@ -158,3 +158,42 @@ section.darkBlue {
         }
     }
 }
+
+
+footer.footerLayout{
+    background: $oil;
+    padding: 30px 0;
+    color: $base;
+    font-size: 11px;
+    .discover:before,
+    .heyChef:before,
+    .forkus:before,
+    {
+        font-family:$font-family-nasty;
+        font-size:rem-calc(15);
+        position: absolute;
+        margin: -5px 0 0 -20px;
+    }
+    .discover{
+        color: inherit;
+        margin-left: 30px;
+        &:before{
+            content:'\e003';
+            
+        }
+    }
+    .heyChef{
+        text-align: center;
+        font-size: inherit;
+        &:before{
+            content:'\e006';
+            
+        }
+    }
+    .forkus{
+        color: inherit;
+        &:before{
+            content:'\e005';
+        }
+    }
+}
