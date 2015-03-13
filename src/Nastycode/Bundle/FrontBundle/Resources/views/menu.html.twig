@@ -1,9 +1,9 @@
 <div class="row identification">
     <div class="headerNastyLogo small-12 medium-3 columns">
-        <a href="#"><img src="#" alt="nastyCo.de Logo"></a>
+        <a href="{{ path('nastycode_front_home_index') }}"><img src="#" alt="nastyCo.de Logo"></a>
     </div>
     <div class="discoverNastycode small-12 medium-3 columns">
-        <a href="#">Découvrir les nastycodes</a>
+        <a href="{{ path('nastycode_front_posts_posts') }}">Découvrir les nastycodes</a>
     </div>
 
     {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
@@ -20,8 +20,8 @@
 
                 <!-- <button data-dropdown="drop" aria-controls="drop", aria-expanded="false" class="large alert round button dropdown">Dropdown Button</button><br> -->
                 <ul id="connected-drop" data-dropdown-content class="f-dropdown" role="menu" aria-hidden="false" aria-autoclose="false" tabindex="-1">
-                    <li><a href="{{ path ('nastycode_front_account_account') }}">Mon compte</a></li>
-                    <li><a href="{{ path('nastycode_front_posts_posts') }}">Ajouter un nastyCode</a></li>
+                    <li><a href="{{ path('nastycode_front_account_account') }}">Mon compte</a></li>
+                    <li><a href="{{ path('nastycode_front_codeform_codeform') }}">Ajouter un nastyCode</a></li>
                     <li>
                         <a href="{{ path('fos_user_security_logout') }}">
                             {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}

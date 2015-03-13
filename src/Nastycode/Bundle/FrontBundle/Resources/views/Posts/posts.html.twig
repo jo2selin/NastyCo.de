@@ -6,89 +6,82 @@
 			{{ include("NastycodeFrontBundle::menu.html.twig") }}
 		{% endblock %}
 		<article>
-			<div class="row">
-				<div class="info-author-code small-12 columns">
-					<div class="picUser">
-						<img src="http://lorempixel.com/70/70/cats/" alt="profile picture"/>
-					</div>
-					<div class="descrCode">
-						<h2><a href="#">K.O code</a> <small>par John</small></h2>
-						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quasi accusantium a similique ipsum repellat nulla dicta, expedita officia.</p>
-					</div>
-				</div>
-			</div>
-			<div class="row scriptsNastycode">
-				<div class="small-12 medium-6 columns">
-					<section>
-						<header>
-							<label>JS</label>
-							<h5>K.O code.nasty</h5>
-						</header>
-						<code class="language-javascript">
-var sprite = require('css-sprite');
-sprite.create({
-	src: ['./src/img/*.png'],
-	out: './dist/img'
-	name: 'sprites',
-	style: './dist/scss/_sprites.scss',
-	cssPath: '../img',
-	processor: 'scss'
-}, function () {
-	console.log('done');
-});
-						</code>
-					</section>
-				</div>
-				<div class="small-12 medium-6 columns">
-					<section>
-						<header>
-							<label>JS</label>
-							<h5>John propose cette correction</h5>
-						</header>
-						<code class="language-javascript">
-//Au moins
-//une petite
-//explication ?
-						</code>
-					</section>
-				</div>
-			</div>
-			<div class="row comments">
-				<div class="small-12 medium-6 columns">
-					<h4>936 Commentaires</h4>
-					<div class="comment">
-						<div class="userpicComment">
-							<img src="http://lorempixel.com/50/50/cats/" alt="profile picture"/>
-						</div>
-						<div class="userComment">
-							<header>Francky</header>
-							<p>trop cool</p>
-						</div>
-					</div>
-					<div class="comment">
-						<div class="userpicComment">
-							<img src="http://lorempixel.com/50/50/cats/" alt="profile picture"/>
-						</div>
-						<div class="userComment">
-							<header>Vincent</header>
-							<p>Trop des barres, Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos quasi fugiat culpa cumque consequuntur, dolor fugit neque, ipsam.</p>
-						</div>
-					</div>
-					<p class="text-center">
-					<a href="#">voir tous les commentaires</a>
-					</p>	
-				</div>
-				<div class="small-12 medium-6 columns">
-					<h4>Ecrire un commentaire:</h4>
-					<form class="commentForm" action="#">
-						<ul>
-							<li class="commentFormArea"><textarea></textarea></li>
-							<li class="commentFormsubmit"><input type="submit" value="Envoyer"></li>
-						</ul>
-					</form>
-					<p class="text-center">Pour laisser un commentaire, <a href="#">veuillez vous connecter</a>.</p>
-				</div>
-			</div>
+            {% for post in posts %}
+
+                <div class="row">
+                    <div class="info-author-code small-12 columns">
+                        <div class="picUser">
+                            <img src="http://lorempixel.com/70/70/cats/" alt="profile picture"/>
+                        </div>
+                        <div class="descrCode">
+                            <h2><a href="#">K.O code</a> <small>par John</small></h2>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quasi accusantium a similique ipsum repellat nulla dicta, expedita officia.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="row scriptsNastycode">
+                    <div class="small-12 medium-6 columns">
+                        <section>
+                            <header>
+                                <label>{{ post.lang }}</label>
+                                <h5>K.O code.nasty</h5>
+                            </header>
+                                <code class="language-javascript">{{ post.codeNasty|raw }}</code>
+
+                        </section>
+                    </div>
+                    <div class="small-12 medium-6 columns">
+                        <section>
+                            <header>
+                                <label>{{ post.lang }}</label>
+                                <h5>John propose cette correction</h5>
+                            </header>
+                            <code class="language-javascript">{{ post.codeClean|raw }}</code>
+                        </section>
+                    </div>
+                </div>
+                <div class="row comments">
+                    <div class="small-12 medium-6 columns">
+                        <h4>936 Commentaires</h4>
+                        <div class="comment">
+                            <div class="userpicComment">
+                                <img src="http://lorempixel.com/50/50/cats/" alt="profile picture"/>
+                            </div>
+                            <div class="userComment">
+                                <header>Francky</header>
+                                <p>trop cool</p>
+                            </div>
+                        </div>
+                        <div class="comment">
+                            <div class="userpicComment">
+                                <img src="http://lorempixel.com/50/50/cats/" alt="profile picture"/>
+                            </div>
+                            <div class="userComment">
+                                <header>Vincent</header>
+                                <p>Trop des barres, Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos quasi fugiat culpa cumque consequuntur, dolor fugit neque, ipsam.</p>
+                            </div>
+                        </div>
+                        <p class="text-center">
+                            <a href="#">voir tous les commentaires</a>
+                        </p>
+                    </div>
+                    <div class="small-12 medium-6 columns">
+                        <h4>Ecrire un commentaire:</h4>
+                        {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                            <form class="commentForm" action="#">
+                                <ul>
+                                    <li class="commentFormArea"><textarea></textarea></li>
+                                    <li class="commentFormsubmit"><input type="submit" value="Envoyer"></li>
+                                </ul>
+                            </form>
+                        {% else %}
+                            <p class="text-center">Veuillez vous connecter pour laisser un commentaire.</p>
+                            <p class="text-center">Vous n'avez pas de compte ? <a href="{{ path('fos_user_registration_register') }}">Inscrivez-vous !</a></p>
+                            {{ render(controller('NastycodeUserBundle:Security:login')) }}
+                        {% endif %}
+                    </div>
+                </div>
+            {% endfor %}
 		</article>
 
 		<article>
@@ -169,9 +162,21 @@ $database->connect();
 					Soyez le premier à commenter ce nastyCode.
 					</p>	
 				</div>
-				<div class="small-12 medium-6 columns">
-					<p class="text-center">Pour laisser un commentaire, <a href="#">veuillez vous connecter</a>.</p>
-				</div>
+                <div class="small-12 medium-6 columns">
+                    <h4>Ecrire un commentaire:</h4>
+                    {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                        <form class="commentForm" action="#">
+                            <ul>
+                                <li class="commentFormArea"><textarea></textarea></li>
+                                <li class="commentFormsubmit"><input type="submit" value="Envoyer"></li>
+                            </ul>
+                        </form>
+                    {% else %}
+                        <p class="text-center">Veuillez vous connecter pour laisser un commentaire.</p>
+                        <p class="text-center">Vous n'avez pas de compte ? <a href="{{ path('fos_user_registration_register') }}">Inscrivez-vous !</a></p>
+                        {{ render(controller('NastycodeUserBundle:Security:login')) }}
+                    {% endif %}
+                </div>
 			</div>
 		</article>
 
