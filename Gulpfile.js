@@ -52,7 +52,6 @@ gulp.task('script', function() {
         app + '/js/foundation/foundation.tab.js',
         app + '/js/foundation/foundation.reveal.js',
         app + '/js/app.js',
-        app + 'js/mdeditor.js'
         ])
 
         .pipe($.concat('script.js'))
@@ -70,7 +69,7 @@ gulp.task('script', function() {
  * Images
  */
 gulp.task('images', function() {
-    return gulp.src( app + '/img/**/*.{jpg,jpeg,png,gif,svg}' )
+    return gulp.src( app + '/img/*.{jpg,jpeg,png,gif,svg}' )
         .pipe($.imagemin({
             progressive: true,
             interlaced: true
