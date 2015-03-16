@@ -67,12 +67,15 @@
                     <div class="small-12 medium-6 columns">
                         <h4>Ecrire un commentaire:</h4>
                         {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-                            <form class="commentForm" action="#">
+
+                        {{ form(comment) }}
+
+<!--                             <form class="commentForm" action="#">
                                 <ul>
                                     <li class="commentFormArea"><textarea></textarea></li>
                                     <li class="commentFormsubmit"><input type="submit" value="Envoyer"></li>
                                 </ul>
-                            </form>
+                            </form> -->
                         {% else %}
                             <p class="text-center">Pour poster un commentaire, <a href="{{ path('fos_user_security_login') }}">veuillez vous connecter</a>.</p>
                             <p class="text-center">Vous n'avez pas de compte ? <a href="{{ path('fos_user_registration_register') }}">Inscrivez-vous !</a></p>

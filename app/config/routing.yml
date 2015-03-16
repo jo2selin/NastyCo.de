@@ -17,3 +17,7 @@ nastycode_post_code:
 nastycode_form_code:
     path:     /form
     defaults: { _controller: NastycodeFrontBundle:CodeForm:add }
+
+nastycode_comment_code:
+    path:     /post_code
+    defaults: { _controller: NastycodeFrontBundle:Posts:comment }

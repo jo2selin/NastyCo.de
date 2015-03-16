@@ -31,12 +31,12 @@ twig:
 
 doctrine:
     dbal:
-        driver: pdo_mysql
-        host: localhost
-        port: 8889
-        dbname: symfony
-        user: root
-        password: root
+        driver: %database_driver%
+        host: %database_host%
+        port: %database_port%
+        dbname: %database_name%
+        user: %database_user%
+        password: %database_password%
         charset: UTF8
     orm:
         auto_generate_proxy_classes: "%kernel.debug%"
