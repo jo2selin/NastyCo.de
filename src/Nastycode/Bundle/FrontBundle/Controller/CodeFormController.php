@@ -20,15 +20,16 @@ class CodeFormController extends Controller
      */
     public function addAction(Request $request)
     {
-        // On crée un objet Advert
+        // On crée un objet Publication
         $publication = new Publication();
-        $user = $this->getUser();
+
+        $publication -> setUsername($this -> getUser() -> getUsername());
 
         $form = $this->get('form.factory')->createBuilder('form', $publication)
+            ->add('title',        'text')
             ->add('description',  'textarea')
             ->add('codenasty',    'textarea')
             ->add('codeclean',    'textarea')
-            ->add('likes',        'checkbox')
             ->add('lang',         'choice',        array(
                 'choices'   => array('html' => 'HTML', 'css' => 'CSS', 'php' => 'PHP', 'JS' => 'JavaScript'),
                 'required'  => false,))
@@ -58,7 +59,6 @@ class CodeFormController extends Controller
         // - Soit la requête est de type GET, donc le visiteur vient d'arriver sur la page et veut voir le formulaire
         // - Soit la requête est de type POST, mais le formulaire contient des valeurs invalides, donc on l'affiche de nouveau
         return $this->render('NastycodeFrontBundle:CodeForm:add.html.twig', array(
-            'member' => $user,
             'form' => $form->createView(),
         ));
     }

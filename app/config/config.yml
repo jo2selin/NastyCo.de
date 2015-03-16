@@ -31,12 +31,12 @@ twig:
 
 doctrine:
     dbal:
-        driver: "%database_driver%"
-        host: "%database_host%"
-        port: "%database_port%"
-        dbname: "%database_name%"
-        user: "%database_user%"
-        password: "%database_password%"
+        driver: %database_driver%
+        host: %database_host%
+        port: %database_port%
+        dbname: %database_name%
+        user: %database_user%
+        password: %database_password%
         charset: UTF8
     orm:
         auto_generate_proxy_classes: "%kernel.debug%"
@@ -55,10 +55,3 @@ fos_user:
     db_driver: orm
     firewall_name: main
     user_class: Nastycode\Bundle\UserBundle\Entity\User
-
-fos_comment:
-    db_driver: orm
-    class:
-        model:
-            comment: Nastycode\Bundle\UserBundle\Entity\Comment
-            thread: Nastycode\Bundle\UserBundle\Entity\Thread
