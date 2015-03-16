@@ -22,7 +22,7 @@
                     <div class="small-12 medium-6 columns">
                         <section>
                             <header>
-                                <label>{{ post.lang }}</label>
+                                <label>{{ post.lang|upper }}</label>
                                 <h5>K.O code.nasty</h5>
                             </header>
                                 <code class="language-javascript">{{ post.codeNasty|raw }}</code>
@@ -32,7 +32,7 @@
                     <div class="small-12 medium-6 columns">
                         <section>
                             <header>
-                                <label>{{ post.lang }}</label>
+                                <label>{{ post.lang|upper }}</label>
                                 <h5>John propose cette correction</h5>
                             </header>
                             <code class="language-javascript">{{ post.codeClean|raw }}</code>
