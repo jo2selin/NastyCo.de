@@ -23,7 +23,7 @@ class PostsController extends Controller
             ->getManager()
             ->getRepository('NastycodeFrontBundle:Publication')
         ;
-        $posts = $repository->findAll();
+        $posts = $repository->findBy(array(), array(), 10);
 
         $commentaires = new Commentaires();
 

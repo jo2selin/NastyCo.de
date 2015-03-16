@@ -6,14 +6,14 @@
 			{{ include("NastycodeFrontBundle::menu.html.twig") }}
 		{% endblock %}
 		<article>
-            {% for post in posts %}
+            {% for post in posts%}
                 <div class="row">
                     <div class="info-author-code small-12 columns">
                         <div class="picUser">
                             <img src="http://lorempixel.com/70/70/cats/" alt="profile picture"/>
                         </div>
                         <div class="descrCode">
-                            <h2><a href="#">K.O code</a> <small>par {{ post.member }}</small></h2>
+                            <h2><a href="#">{{ post.member }}</a> <small>par {{ post.member }}</small></h2>
                             <p>{{ post.description }}</p>
                         </div>
                     </div>
