@@ -45,4 +45,16 @@ class PostsController extends Controller
             'user' => $user
         ));
     }   
+
+    /**
+     * @Route("/addPost")
+     * @Template()
+     */
+    public function addPostAction()
+    {
+        $user = $this->getUser();
+        return $this->render('NastycodeFrontBundle:Posts:addPost.html.twig', array(
+            'user' => $user
+        ));
+    }   
 }
