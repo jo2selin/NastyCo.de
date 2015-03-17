@@ -57,7 +57,7 @@ class Commentaires
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -70,10 +70,10 @@ class Commentaires
     }
 
     /**
-    * Set Username
-    *
-    * @return string
-    */
+     * Set Username
+     *
+     * @return string
+     */
     public function setUsername($username)
     {
         $this->username = $username;
@@ -87,10 +87,10 @@ class Commentaires
     }
 
     /**
-    * Set Commentaires
-    *
-    * @return string
-    */
+     * Set Commentaires
+     *
+     * @return string
+     */
     public function setCommentaires($commentaires)
     {
         $this->commentaires = $commentaires;
@@ -101,7 +101,7 @@ class Commentaires
     /**
      * Set Userid
      *
-     * @param string $userid
+     * @param string $memberid
      * @return Commentaires
      */
     public function setUserid($user)
@@ -143,7 +143,4 @@ class Commentaires
     {
         return $this->id;
     }
-
 }
-
-?>
