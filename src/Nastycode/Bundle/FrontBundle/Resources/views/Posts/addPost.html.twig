@@ -6,7 +6,7 @@
 			{{ include("NastycodeFrontBundle::menu.html.twig") }}
 		{% endblock %}
 		<article>
-            <form>
+            {{ form_start(form)}}
                 <div class="row">
                     <div class="large-12 columns">
                         <label>Choisissez un langage
@@ -46,8 +46,8 @@
                         {{ form_widget(form.envoyer) }}
                     </div>
                 </div>
-            </form>
-		</article>
+            {{ form_end(form)}}
+        </article>
 	</section>
 {% endblock %}
 

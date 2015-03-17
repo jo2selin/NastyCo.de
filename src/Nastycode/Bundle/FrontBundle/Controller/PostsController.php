@@ -62,10 +62,12 @@ class PostsController extends Controller
         ;
         $comments = $commentrepository->findBy(array(), array(), 2);
 
+        $user = $this->getUser();
         return $this->render('NastycodeFrontBundle:Posts:posts.html.twig', array(
             'comment' => $comment->createView(),
             'posts' => $posts,
             'comments' => $comments,
+            'user' => $user,
         ));
     }
 
@@ -111,10 +113,11 @@ class PostsController extends Controller
             return $this->redirect($this->generateUrl('nastycode_comment_code', array('id' => $commentaires->getId())));
         }
 
+        $user = $this->getUser();
         return $this->render('NastycodeFrontBundle:Posts:post.html.twig', array(
             'comment' => $comment->createView(),
             'posts' => $posts,
-
+            'user' => $user,
         ));
     }
 
@@ -132,10 +135,11 @@ class PostsController extends Controller
         $publication->setUsername($this->getUser()->getUsername());
 
         $form = $this->get('form.factory')->createBuilder('form', $publication)
+            ->setMethod("POST")
             ->add('title', 'text')
-            ->add('description', 'textarea')
             ->add('codenasty', 'textarea')
             ->add('codeclean', 'textarea')
+            ->add('description', 'textarea')
             ->add('lang', 'choice', array(
                 'choices' => array('html' => 'HTML', 'css' => 'CSS', 'scss' => 'SASS', 'php' => 'PHP', 'javascript' => 'JS', 'ruby' => 'RUBY', 'python' => 'PYTHON')))
             ->add('envoyer', 'submit')
@@ -159,12 +163,14 @@ class PostsController extends Controller
             return $this->redirect($this->generateUrl('nastycode_front_posts_posts', array('id' => $publication->getId())));
 
         }
+        $user = $this->getUser();
 
         // À ce stade, le formulaire n'est pas valide car :
         // - Soit la requête est de type GET, donc le visiteur vient d'arriver sur la page et veut voir le formulaire
         // - Soit la requête est de type POST, mais le formulaire contient des valeurs invalides, donc on l'affiche de nouveau
         return $this->render('NastycodeFrontBundle:Posts:addPost.html.twig', array(
-            'form' => $form->createView()
+            'form' => $form->createView(),
+            'user' => $user,
         ));
     }
 }

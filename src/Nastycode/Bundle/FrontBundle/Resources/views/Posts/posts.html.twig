@@ -54,17 +54,8 @@
                             </div>
                         </div>
                         {% endfor %}
-                        <!--<div class="comment">
-                            <div class="userpicComment">
-                                <img src="http://lorempixel.com/50/50/cats/" alt="profile picture"/>
-                            </div>
-                            <div class="userComment">
-                                <header>Vincent</header>
-                                <p>Trop des barres, Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos quasi fugiat culpa cumque consequuntur, dolor fugit neque, ipsam.</p>
-                            </div>
-                        </div>-->
                         <p class="text-center">
-                            <a href="#">voir tous les commentaires</a>
+                            <a href="{{ path('nastycode_front_posts_post', {'id': post.id}) }}">voir tous les commentaires</a>
                         </p>
                     </div>
                     <div class="small-12 medium-6 columns">
@@ -73,7 +64,7 @@
                             {{ form_start(comment, {'attr': {'class': 'commentForm'}}) }}
                                 <ul>
                                     <li class="commentFormArea">{{ form_widget(comment.commentaires) }}</li>
-                                    <li class="commentFormsubmit">{{ form_widget(comment.save) }}</li>
+                                    <li class="commentFormsubmit">{{ form_widget(comment.envoyer) }}</li>
                                 </ul>
                             {{ form_end(comment) }}
                         {% else %}
