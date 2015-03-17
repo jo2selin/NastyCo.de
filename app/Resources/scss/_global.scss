@@ -16,7 +16,7 @@
 
 
 body {
-    background:$snow;
+    background: $oil;
 
     @include box-sizing();
 }
@@ -72,93 +72,95 @@ section.darkBlue {
     }
 }
 
-.row.identification {
-    padding:20px;
-    .headerNastyLogo {
-        text-align:center;
-        img {
-            width:200px;
-            height:60px;
-        }
-    }
-    .discoverNastycode {
-        text-align:center;
-        color:$white;
-        padding:20px 0 0 0;
-        & a {
-            color:inherit;
-            @include single-transition(color);
-            &:before {
-                position:absolute;
-                content:'\e003';
-                font-family:$font-family-nasty;
-                font-size:rem-calc(16);
-                margin-left:-20px;
-            }
-            &:hover{
-            	color: $secondary-color;
+header.headerNasty{
+    background: $primary-color;
+    .row.identification {
+        padding:20px;
+        .headerNastyLogo {
+            text-align:center;
+            img {
+                width:200px;
+                height:60px;
             }
         }
-    }
-    .right {
-        width:100%;
-        padding:10px 0 0 0;
-        @media #{$medium-up} {
-            width:auto;
+        .discoverNastycode {
+            text-align:center;
+            color:$white;
+            padding:20px 0 0 0;
+            & a {
+                color:inherit;
+                @include single-transition(color);
+                &:before {
+                    position:absolute;
+                    content:'\e003';
+                    font-family:$font-family-nasty;
+                    font-size:rem-calc(16);
+                    margin-left:-20px;
+                }
+                &:hover{
+                	color: $secondary-color;
+                }
+            }
         }
-    }
-    .not_connected {
-        a {
-            padding:10px;
-            color:$primary-color-dark;
-            border-bottom:solid 5px $primary-color;
+        .right {
+            width:100%;
+            padding:10px 0 0 0;
+            @media #{$medium-up} {
+                width:auto;
+            }
+        }
+        .not_connected {
+            a {
+                padding:10px;
+                color:$primary-color-dark;
+                border-bottom:solid 5px $primary-color;
 
-            @include single-transition(border-bottom-color);
-            &:hover {
-                border-bottom:solid 5px darken($primary-color, 5%);
+                @include single-transition(border-bottom-color);
+                &:hover {
+                    border-bottom:solid 5px darken($primary-color, 5%);
+                }
             }
         }
-    }
-    .connected {
-        height:40px;
-        background:darken($primary-color, 10%);
-        cursor:pointer;
-        overflow:hidden;
-        @include dropdown-button(medium, $primary-color);
-        @include single-transition(background-color);
-        &:after {
-            @include single-transition(border-top-color);
-        }
-
-        @include radius(20px);
-        .icon-user {
-            position:absolute;
-            width:30px;
-            height:30px;
-            margin:5px;
-            background:$primary-color;
-
-            @include radius(50%);
-        }
-        p {
-            margin-left:50px;
-            color:$primary-color;
-            font-size:1.2rem;
-            line-height:2.6rem;
-            @include single-transition(color);
-        }
-        &:hover {
-            background:darken($primary-color, 14%);
-            p {
-                color:$white;
-            }
+        .connected {
+            height:40px;
+            background:darken($primary-color, 10%);
+            cursor:pointer;
+            overflow:hidden;
+            @include dropdown-button(medium, $primary-color);
+            @include single-transition(background-color);
             &:after {
-                border-top-color:$white;
+                @include single-transition(border-top-color);
+            }
+
+            @include radius(20px);
+            .icon-user {
+                position:absolute;
+                width:30px;
+                height:30px;
+                margin:5px;
+                background:$primary-color;
+
+                @include radius(50%);
+            }
+            p {
+                margin-left:50px;
+                color:$primary-color;
+                font-size:1.2rem;
+                line-height:2.6rem;
+                @include single-transition(color);
+            }
+            &:hover {
+                background:darken($primary-color, 14%);
+                p {
+                    color:$white;
+                }
+                &:after {
+                    border-top-color:$white;
+                }
             }
         }
     }
 }
-
 
 footer.footerLayout{
     background: $oil;
