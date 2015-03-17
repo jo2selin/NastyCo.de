@@ -31,6 +31,28 @@ class Commentaires
      */
     private $commentaires;
 
+    /**
+     * @var string
+     *
+     * @ORM\ManyToOne(targetEntity="Publications", cascade={"persist"})
+     * @ORM\Column(name="postid", type="integer")
+     */
+    private $postid;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="userid", type="integer")
+     */
+    private $userid;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="username", type="string", length=255)
+     */
+    private $username;
+
 
     /**
      * Get id
@@ -74,6 +96,52 @@ class Commentaires
         $this->commentaires = $commentaires;
 
         return $this;
+    }
+
+    /**
+     * Set Userid
+     *
+     * @param string $userid
+     * @return Commentaires
+     */
+    public function setUserid($user)
+    {
+        $this->userid = $user;
+
+        return $this;
+    }
+
+    /**
+     * Get Userid
+     *
+     * @return string
+     */
+    public function getUserid()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set Postid
+     *
+     * @param string $userid
+     * @return Commentaires
+     */
+    public function setPostid($commentaire)
+    {
+        $this->postid = $commentaire;
+
+        return $this;
+    }
+
+    /**
+     * Get Postid
+     *
+     * @return string
+     */
+    public function getPostid()
+    {
+        return $this->id;
     }
 
 }

@@ -132,8 +132,9 @@ section.homeExemple {
                     }
                     &.commentFormsubmit {
                         width: 130px;
-                        input{
+                        button{
                         vertical-align:middle;
+                          border-radius: 0;
                         // opacity: 0;
                         height:50px;
                         border:none;

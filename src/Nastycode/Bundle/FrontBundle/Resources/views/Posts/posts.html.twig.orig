@@ -10,7 +10,7 @@
                 <div class="row">
                     <div class="info-author-code small-12 columns">
                         <div class="picUser">
-                            <img src="{% if app.security.getToken().getUser().pictureName %}{{ asset('uploads/pictures/nastypic_' ~ post.member ~ '.jpg') }}{% else %}{{ asset('bundles/nastycodefront/img/userpic.png') }}{% endif %}" alt="Profile Picture">
+                            <img src="{% if user.pictureName is defined %}{{ asset('uploads/pictures/nastypic_' ~ post.member ~ '.jpg') }}{% else %}{{ asset('bundles/nastycodefront/img/userpic.png') }}{% endif %}" alt="Profile Picture">
                         </div>
                         <div class="descrCode">
                             <h2><a href="{{ path('nastycode_front_posts_post', {'id': post.id}) }}">{{ post.title }}</a> <small>par {{ post.member }}</small></h2>
@@ -22,8 +22,13 @@
                     <div class="small-12 medium-6 columns">
                         <section>
                             <header>
-                                <label>{{ post.lang|upper }}</label>
+<<<<<<< HEAD
+                                <label>{{ post.lang }}</label>
                                 <h5>{{ post.title }}</h5>
+=======
+                                <label>{{ post.lang|upper }}</label>
+                                <h5>K.O code.nasty</h5>
+>>>>>>> b62e9e7157a6cc9683ac993955f96bde2d608386
                             </header>
                                 <code class="language-{{ post.lang }}">{{ post.codeNasty|raw }}</code>
 
@@ -32,29 +37,31 @@
                     <div class="small-12 medium-6 columns">
                         <section>
                             <header>
-                                <label>{{ post.lang|upper }}</label>
+<<<<<<< HEAD
+                                <label>{{ post.lang }}</label>
                                 <h5>{{ post.member }} propose cette correction</h5>
+=======
+                                <label>{{ post.lang|upper }}</label>
+                                <h5>John propose cette correction</h5>
+>>>>>>> b62e9e7157a6cc9683ac993955f96bde2d608386
                             </header>
                             <code class="language-{{ post.lang }}">{{ post.codeClean|raw }}</code>
                         </section>
                     </div>
                 </div>
                 <div class="row comments">
-
                     <div class="small-12 medium-6 columns">
                         <h4>936 Commentaires</h4>
-                        {% for comment in comments %}
                         <div class="comment">
                             <div class="userpicComment">
                                 <img src="http://lorempixel.com/50/50/cats/" alt="profile picture"/>
                             </div>
                             <div class="userComment">
-                                <header>{{ comment.username }}</header>
-                                <p>{{ comment.commentaires }}</p>
+                                <header>Francky</header>
+                                <p>trop cool</p>
                             </div>
                         </div>
-                        {% endfor %}
-                        <!--<div class="comment">
+                        <div class="comment">
                             <div class="userpicComment">
                                 <img src="http://lorempixel.com/50/50/cats/" alt="profile picture"/>
                             </div>
@@ -62,7 +69,7 @@
                                 <header>Vincent</header>
                                 <p>Trop des barres, Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos quasi fugiat culpa cumque consequuntur, dolor fugit neque, ipsam.</p>
                             </div>
-                        </div>-->
+                        </div>
                         <p class="text-center">
                             <a href="#">voir tous les commentaires</a>
                         </p>
@@ -70,12 +77,15 @@
                     <div class="small-12 medium-6 columns">
                         <h4>Ecrire un commentaire:</h4>
                         {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-                            <form class="commentForm" action="#">
+
+                        {{ form(comment) }}
+
+<!--                             <form class="commentForm" action="#">
                                 <ul>
-                                    <li class="commentFormArea">{{ form_widget(comment.commentaires) }}</li>
-                                    <li class="commentFormsubmit">{{ form_widget(comment.envoyer) }}</li>
+                                    <li class="commentFormArea"><textarea></textarea></li>
+                                    <li class="commentFormsubmit"><input type="submit" value="Envoyer"></li>
                                 </ul>
-                            </form>
+                            </form> -->
                         {% else %}
                             <p class="text-center">Pour poster un commentaire, <a href="{{ path('fos_user_security_login') }}">veuillez vous connecter</a>.</p>
                             <p class="text-center">Vous n'avez pas de compte ? <a href="{{ path('fos_user_registration_register') }}">Inscrivez-vous !</a></p>

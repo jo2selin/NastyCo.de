@@ -10,18 +10,19 @@
         <div class="small-12 medium-4 columns">
             <div class="right">
                 <div class="connected dropdown" data-dropdown="connected-drop" aria-controls="connected-drop">
-                   {% if user.pictureName %}
-                        <img src="{{ asset(user.getWebPath()) }}" class="icon-user" alt="profile picture">
+                   {% if app.security.getToken().getUser().pictureName %}
+
+                       <img src="{{ asset(app.security.getToken().getUser().getWebPath()) }}" class="icon-user" alt="profile picture">
                     {% else %}
                         <img src="{{ asset('bundles/nastycodefront/img/userpic.png') }}" class="icon-user" alt="profile picture">
                     {% endif %}
-                    <p>{{ user.username }}</p>
+                    <p>{{ app.security.getToken().getUser().getUsername() }}</p>
                 </div>
 
                 <!-- <button data-dropdown="drop" aria-controls="drop", aria-expanded="false" class="large alert round button dropdown">Dropdown Button</button><br> -->
                 <ul id="connected-drop" data-dropdown-content class="f-dropdown" role="menu" aria-hidden="false" aria-autoclose="false" tabindex="-1">
                     <li><a href="{{ path('nastycode_front_account_account') }}">Mon compte</a></li>
-                    <li><a href="{{ path('nastycode_front_codeform_add') }}">Ajouter un nastyCode</a></li>
+                    <li><a href="{{ path('nastycode_front_posts_addpost') }}">Ajouter un nastyCode</a></li>
                     <li>
                         <a href="{{ path('fos_user_security_logout') }}">
                             {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}

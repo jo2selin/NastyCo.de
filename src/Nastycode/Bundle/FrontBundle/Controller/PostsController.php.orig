@@ -8,9 +8,12 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Core\SecurityContextInterface;
 use Symfony\Component\Security\Core\Exception\AuthenticationException;
-use Nastycode\Bundle\FrontBundle\Entity\Commentaires;
+<<<<<<< HEAD
 use Nastycode\Bundle\FrontBundle\Entity\Publication;
-
+use Nastycode\Bundle\FrontBundle\Form\addPostType;
+=======
+use Nastycode\Bundle\FrontBundle\Entity\Commentaires;
+>>>>>>> b62e9e7157a6cc9683ac993955f96bde2d608386
 
 class PostsController extends Controller
 {
@@ -25,15 +28,13 @@ class PostsController extends Controller
             ->getManager()
             ->getRepository('NastycodeFrontBundle:Publication')
         ;
-        $posts = $repository->findBy(array(), array('date' => 'DESC'), 10);
+        $posts = $repository->findBy(array(), array(), 10);
 
         $commentaires = new Commentaires();
 
-        $commentaires->setUsername($this->getUser()->getUsername());
-
         $comment = $this->get('form.factory')->createBuilder('form', $commentaires)
             ->add('commentaires', 'textarea')
-            ->add('envoyer',      'submit')
+            ->add('save',      'submit')
             ->getForm()
         ;
 
@@ -54,17 +55,12 @@ class PostsController extends Controller
             // On redirige vers la page de visualisation de l'annonce nouvellement créée
             return $this->redirect($this->generateUrl('nastycode_comment_code', array('id' => $commentaires->getId())));
         }
-        $commentrepository = $this
-            ->getDoctrine()
-            ->getManager()
-            ->getRepository('NastycodeFrontBundle:Commentaires')
-        ;
-        $comments = $commentrepository->findBy(array(), array(), 2);
 
+        $user = $this->getUser();
         return $this->render('NastycodeFrontBundle:Posts:posts.html.twig', array(
-            'comment' => $comment->createView(),
+            'user' => $user,
             'posts' => $posts,
-            'comments' => $comments,
+            'comment' => $comment->createView(),
         ));
     }
 
@@ -73,7 +69,7 @@ class PostsController extends Controller
      * @Route("/nastycode/{id}")
      * @Template()
      */
-    public function postAction($id, Request $request)
+    public function postAction($id)
     {
         $repository = $this
             ->getDoctrine()
@@ -82,39 +78,12 @@ class PostsController extends Controller
         ;
         $posts = $repository->findById($id);
 
-        $commentaires = new Commentaires();
-
-        $commentaires->setUsername($this->getUser()->getUsername());
-
-        $comment = $this->get('form.factory')->createBuilder('form', $commentaires)
-            ->add('commentaires', 'textarea')
-            ->add('envoyer',      'submit')
-            ->getForm()
-        ;
-
-        // On fait le lien Requête <-> Formulaire
-        // À partir de maintenant, la variable $commentaires contient les valeurs entrées dans le formulaire par le visiteur
-        $comment->handleRequest($request);
-
-        // On vérifie que les valeurs entrées sont correctes
-        // (Nous verrons la validation des objets en détail dans le prochain chapitre)
-        if ($comment->isValid()) {
-            // On l'enregistre notre objet $commentaires dans la base de données, par exemple
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($commentaires);
-            $em->flush();
-
-            $request->getSession()->getFlashBag()->add('notice', 'Annonce bien enregistrée.');
-
-            // On redirige vers la page de visualisation de l'annonce nouvellement créée
-            return $this->redirect($this->generateUrl('nastycode_comment_code', array('id' => $commentaires->getId())));
-        }
-
+        $user = $this->getUser();
         return $this->render('NastycodeFrontBundle:Posts:post.html.twig', array(
-            'comment' => $comment->createView(),
+            'user' => $user,
             'posts' => $posts,
-
         ));
+<<<<<<< HEAD
     }
 
     /**
@@ -126,6 +95,7 @@ class PostsController extends Controller
 
         // On crée un objet Publication
 
+        $user = $this->getUser();
         $publication = new Publication();
 
         $publication->setUsername($this->getUser()->getUsername());
@@ -155,15 +125,19 @@ class PostsController extends Controller
             $request->getSession()->getFlashBag()->add('notice', 'Annonce bien enregistrée.');
 
             // On redirige vers la page de visualisation de l'annonce nouvellement créée
-            return $this->redirect($this->generateUrl('nastycode_front_posts_posts', array('id' => $publication->getId())));
-
+            return $this->redirect($this->generateUrl('nastycode_front_posts_posts'));
         }
 
         // À ce stade, le formulaire n'est pas valide car :
         // - Soit la requête est de type GET, donc le visiteur vient d'arriver sur la page et veut voir le formulaire
         // - Soit la requête est de type POST, mais le formulaire contient des valeurs invalides, donc on l'affiche de nouveau
         return $this->render('NastycodeFrontBundle:Posts:addPost.html.twig', array(
+            'user' => $user,
             'form' => $form->createView()
         ));
     }
+=======
+    }   
+
+>>>>>>> b62e9e7157a6cc9683ac993955f96bde2d608386
 }
