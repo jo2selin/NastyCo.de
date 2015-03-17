@@ -32,6 +32,7 @@ class PostsController extends Controller
         $commentaires->setUsername($this->getUser()->getUsername());
 
         $comment = $this->get('form.factory')->createBuilder('form', $commentaires)
+            ->setMethod("POST")
             ->add('commentaires', 'textarea')
             ->add('envoyer',      'submit')
             ->getForm()
@@ -52,7 +53,7 @@ class PostsController extends Controller
             $request->getSession()->getFlashBag()->add('notice', 'Annonce bien enregistrée.');
 
             // On redirige vers la page de visualisation de l'annonce nouvellement créée
-            return $this->redirect($this->generateUrl('nastycode_comment_code', array('id' => $commentaires->getId())));
+            return $this->redirect($this->generateUrl('nastycode_front_posts_posts', array('id' => $commentaires->getId())));
         }
         $commentrepository = $this
             ->getDoctrine()
