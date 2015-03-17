@@ -8,6 +8,8 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Core\SecurityContextInterface;
 use Symfony\Component\Security\Core\Exception\AuthenticationException;
+use Nastycode\Bundle\FrontBundle\Entity\Commentaires;
+use Nastycode\Bundle\FrontBundle\Entity\Publication;
 
 
 class PostsController extends Controller
@@ -28,6 +30,7 @@ class PostsController extends Controller
         $commentaires = new Commentaires();
 
         $comment = $this->get('form.factory')->createBuilder('form', $commentaires)
+            ->setMethod("POST")
             ->add('commentaires', 'textarea')
             ->add('save',      'submit')
             ->getForm()
@@ -48,7 +51,7 @@ class PostsController extends Controller
             $request->getSession()->getFlashBag()->add('notice', 'Annonce bien enregistrée.');
 
             // On redirige vers la page de visualisation de l'annonce nouvellement créée
-            return $this->redirect($this->generateUrl('nastycode_comment_code', array('id' => $commentaires->getId())));
+            return $this->redirect($this->generateUrl('nastycode_front_posts_posts', array('id' => $commentaires->getId())));
         }
 
         $user = $this->getUser();
