@@ -6,42 +6,48 @@
 			{{ include("NastycodeFrontBundle::menu.html.twig") }}
 		{% endblock %}
 		<article>
-			<form>
-			  <div class="row">
-			    <div class="large-12 columns">
-			      <label>Choisissez un langage
-			        <select>
-			          <option value="JS">JS</option>
-			          <option value="PHP">PHP</option>
-			          <option value="HTML">HTML</option>
-			          <option value="CSS">CSS</option>
-			        </select>
-			      </label>
-			    </div>
-			  </div>
-			  <div class="row">
-			    <div class="large-12 columns">
-			      <label>Desciption de votre nastyCode
-			        <textarea placeholder="small-12.columns">Qui a écris ce code, dans quel contexte...</textarea>
-			      </label>
-			    </div>
-			  </div>
-			  <div class="row">
-			    <div class="large-12 columns">
-			      <label>Votre nastyCode
-			        <textarea placeholder="small-12.columns">Pour une meilleure lisibilté indentez correctement votre nastyCode.</textarea>
-			      </label>
-			    </div>
-			  </div>
-			  <div class="row">
-			    <div class="large-12 columns">
-			      <label>Proposez une correction de votre nastyCode
-			        <textarea placeholder="small-12.columns">//Et vous ? vous l'auriez codé comment ? <br/>// Vous pouvez aussi ajouter des commentaires</textarea>
-			      </label>
-			    </div>
-			  </div>
-			</form>
-		</article>
+            {{ form_start(form)}}
+                <div class="row">
+                    <div class="large-12 columns">
+                        <label>Choisissez un langage
+                            {{ form_widget(form.lang) }}
+                        </label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="large-12 columns">
+                        <label>Titre de votre nastyCode
+                            {{ form_widget(form.title) }}
+                        </label>
+                    </div>
+                </div><div class="row">
+                    <div class="large-12 columns">
+                        <label>Desciption de votre nastyCode
+                            {{ form_widget(form.description, {'attr': {'placeholder': 'Qui a écris ce code, dans quel contexte...', 'class': 'small-12.columns'}}) }}
+                        </label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="large-12 columns">
+                        <label>Votre nastyCode
+                            {{ form_widget(form.codenasty, {'attr': {'placeholder': 'Pour une meilleure lisibilté indentez correctement votre nastyCode.', 'class': 'small-12.columns'}}) }}
+                        </label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="large-12 columns">
+                        <label>Proposez une correction de votre nastyCode
+                            {{ form_widget(form.codeclean, {'attr': {'placeholder': '//Et vous ? vous l\'auriez codé comment ? Vous pouvez aussi ajouter des commentaires', 'class': 'small-12.columns'}})}}
+                        </label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="large-12 columns">
+                        {{ form_widget(form.envoyer) }}
+                    </div>
+                </div>
+            {{ form(form) }}
+        </article>
 	</section>
 {% endblock %}
 

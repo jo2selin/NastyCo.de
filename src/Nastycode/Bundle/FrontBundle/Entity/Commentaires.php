@@ -34,15 +34,21 @@ class Commentaires
     /**
      * @var string
      *
-     * @ORM\Column(name="username", type="string", length=255)
+     * @ORM\ManyToOne(targetEntity="Publication")
      */
-    private $username;
+    private $post;
 
+    /**
+     * @var string
+     *
+     * @ORM\ManyToOne(targetEntity="Nastycode\Bundle\UserBundle\Entity\User")
+     */
+    private $user;
 
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -55,27 +61,10 @@ class Commentaires
     }
 
     /**
-    * Set Username
-    *
-    * @return string
-    */
-    public function setUsername($username)
-    {
-        $this->username = $username;
-
-        return $this;
-    }
-
-    public function getCommentaires()
-    {
-        return $this->commentaires;
-    }
-
-    /**
-    * Set Commentaires
-    *
-    * @return string
-    */
+     * Set Commentaires
+     *
+     * @return string
+     */
     public function setCommentaires($commentaires)
     {
         $this->commentaires = $commentaires;
@@ -83,6 +72,59 @@ class Commentaires
         return $this;
     }
 
-}
+    /**
+     * Get Commentaires
+     *
+     * @return string
+     */
+    public function getCommentaires()
+    {
+        return $this->commentaires;
+    }
 
-?>
+    /**
+     * Set Userid
+     *
+     * @param string $memberid
+     * @return Commentaires
+     */
+    public function setUser($user)
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * Get Userid
+     *
+     * @return string
+     */
+    public function getUser()
+    {
+        return $this->user;
+    }
+
+    /**
+     * Set Postid
+     *
+     * @param string $userid
+     * @return Commentaires
+     */
+    public function setPost($commentaire)
+    {
+        $this->post = $commentaire;
+
+        return $this;
+    }
+
+    /**
+     * Get Postid
+     *
+     * @return string
+     */
+    public function getPost()
+    {
+        return $this->post;
+    }
+}

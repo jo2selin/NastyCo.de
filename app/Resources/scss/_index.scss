@@ -1,0 +1,42 @@
+.logoIndex{
+	position: relative;
+	@media #{$medium-up} {
+	    padding-top: 100px
+	}
+	
+	.nastyLogoLarge{
+		img{
+			// max-width: 800px;
+			display: none;
+			@media #{$medium-up} {
+			    display: block;
+			    margin: auto;
+			}
+		}
+	}
+	.lastyco{
+		img{
+			position: absolute;
+			left: 0px;
+			top: 0px;
+			margin: 100px 0 0 -46px;
+			@media #{$medium-up} {
+				margin: 200px 0 0 -46px;
+			}
+		}
+	}
+	.presentation{
+		font-size:rem-calc(18);
+		margin-top: 50px;
+		position: relative;
+		z-index: 10;
+		text-shadow: 0px 0px 5px $primary-color;
+	}
+}
+.buttonDiscoverDesktop{
+	display: none;
+	@media #{$medium-up} {
+	    display: block;
+	    margin: auto;
+	}
+}
