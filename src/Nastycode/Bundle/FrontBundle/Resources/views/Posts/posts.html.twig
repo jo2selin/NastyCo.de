@@ -10,10 +10,10 @@
                 <div class="row">
                     <div class="info-author-code small-12 columns">
                         <div class="picUser">
-                            <img src="{% if user.pictureName is defined %}{{ asset('uploads/pictures/nastypic_' ~ post.member ~ '.jpg') }}{% else %}{{ asset('bundles/nastycodefront/img/userpic.png') }}{% endif %}" alt="Profile Picture">
+                            <img src="{% if post.user.pictureName is not null %}{{ asset('uploads/pictures/nastypic_' ~ post.member ~ '.jpg') }}{% else %}{{ asset('bundles/nastycodefront/img/userpic.png') }}{% endif %}" alt="Profile Picture">
                         </div>
                         <div class="descrCode">
-                            <h2><a href="{{ path('nastycode_front_posts_post', {'id': post.id}) }}">{{ post.title }}</a> <small>par {{ post.member }}</small></h2>
+                            <h2><a href="{{ path('nastycode_front_posts_post', {'id': post.id}) }}">{{ post.title }}</a> <small>par {{ post.user.username }}</small></h2>
                             <p>{{ post.description }}</p>
                         </div>
                     </div>
@@ -33,7 +33,7 @@
                         <section>
                             <header>
                                 <label>{{ post.lang|upper }}</label>
-                                <h5>{{ post.member }} propose cette correction</h5>
+                                <h5>{{ post.user.username }} propose cette correction</h5>
                             </header>
                             <code class="language-{{ post.lang }}">{{ post.codeClean|raw }}</code>
                         </section>
@@ -49,7 +49,7 @@
                                 <img src="http://lorempixel.com/50/50/cats/" alt="profile picture"/>
                             </div>
                             <div class="userComment">
-                                <header>{{ comment.username }}</header>
+                                <header>{{ comment.user.username }}</header>
                                 <p>{{ comment.commentaires }}</p>
                             </div>
                         </div>
@@ -60,6 +60,7 @@
                     </div>
                     <div class="small-12 medium-6 columns">
                         <h4>Ecrire un commentaire:</h4>
+                        {% set comment = formcomments[loop.index0] %}
                         {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
                             {{ form_start(comment, {'attr': {'class': 'commentForm'}}) }}
                                 <ul>

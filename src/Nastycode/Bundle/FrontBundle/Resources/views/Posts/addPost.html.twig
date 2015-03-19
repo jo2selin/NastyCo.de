@@ -23,21 +23,21 @@
                 </div><div class="row">
                     <div class="large-12 columns">
                         <label>Desciption de votre nastyCode
-                            {{ form_widget(form.codenasty, {'attr': {'placeholder': 'Qui a écris ce code, dans quel contexte...', 'class': 'small-12.columns'}}) }}
+                            {{ form_widget(form.description, {'attr': {'placeholder': 'Qui a écris ce code, dans quel contexte...', 'class': 'small-12.columns'}}) }}
                         </label>
                     </div>
                 </div>
                 <div class="row">
                     <div class="large-12 columns">
                         <label>Votre nastyCode
-                            {{ form_widget(form.codeclean, {'attr': {'placeholder': 'Pour une meilleure lisibilté indentez correctement votre nastyCode.', 'class': 'small-12.columns'}}) }}
+                            {{ form_widget(form.codenasty, {'attr': {'placeholder': 'Pour une meilleure lisibilté indentez correctement votre nastyCode.', 'class': 'small-12.columns'}}) }}
                         </label>
                     </div>
                 </div>
                 <div class="row">
                     <div class="large-12 columns">
                         <label>Proposez une correction de votre nastyCode
-                            {{ form_widget(form.description, {'attr': {'placeholder': '//Et vous ? vous l\'auriez codé comment ? Vous pouvez aussi ajouter des commentaires', 'class': 'small-12.columns'}})}}
+                            {{ form_widget(form.codeclean, {'attr': {'placeholder': '//Et vous ? vous l\'auriez codé comment ? Vous pouvez aussi ajouter des commentaires', 'class': 'small-12.columns'}})}}
                         </label>
                     </div>
                 </div>
@@ -46,7 +46,7 @@
                         {{ form_widget(form.envoyer) }}
                     </div>
                 </div>
-            {{ form_end(form)}}
+            {{ form(form) }}
         </article>
 	</section>
 {% endblock %}
