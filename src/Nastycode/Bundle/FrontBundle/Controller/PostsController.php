@@ -5,6 +5,7 @@ namespace Nastycode\Bundle\FrontBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Core\SecurityContextInterface;
 use Symfony\Component\Security\Core\Exception\AuthenticationException;
@@ -202,5 +203,39 @@ class PostsController extends Controller
             'form' => $form->createView(),
             'user' => $user,
         ));
+    }
+
+    /**
+     * @Route("/addlike/{id}")
+     */
+    public function addlikeAction($id)
+    {
+        $userid = $this->getUser()->getLikes();
+        $ids = explode(',', $userid);
+
+        if (!in_array($id, $ids)) {
+            $repository = $this
+                ->getDoctrine()
+                ->getManager()
+                ->getRepository('NastycodeFrontBundle:Publication');
+
+
+            $post = $repository->find($id);
+            $likes = $post->getLikes();
+            $likes++;
+            $post->setLikes($likes);
+
+            $ids[] = $id;
+            $this->getUser()->setLikes(implode(',', $ids));
+
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($post);
+            $em->persist($this->getUser());
+            $em->flush();
+        }
+
+        $reponse = new JsonResponse();
+
+        return $reponse;
     }
 }

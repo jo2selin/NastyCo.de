@@ -88,8 +88,29 @@ class Publication
      */
     private $published = true;
 
+    /**
+     * @ORM\OneToMany(targetEntity="Commentaires", mappedBy="post")
+     **/
+    private $commentaires;
+
     public function __construct() {
         $this->date=new \DateTime();
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCommentaires()
+    {
+        return $this->commentaires;
+    }
+
+    /**
+     * @param mixed $commentaires
+     */
+    public function setCommentaires($commentaires)
+    {
+        $this->commentaires = $commentaires;
     }
 
     public function __toString() {

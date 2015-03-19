@@ -25,7 +25,7 @@
                                 <label>{{ post.lang|upper }}</label>
                                 <h5>{{ post.title }}</h5>
                             </header>
-                                <code class="language-{{ post.lang }}">{{ post.codeNasty|raw }}</code>
+                                <code class="language-{{ post.lang }}">{{ post.codeNasty }}</code>
 
                         </section>
                     </div>
@@ -35,18 +35,19 @@
                                 <label>{{ post.lang|upper }}</label>
                                 <h5>{{ post.user.username }} propose cette correction</h5>
                             </header>
-                            <code class="language-{{ post.lang }}">{{ post.codeClean|raw }}</code>
+                            <code class="language-{{ post.lang }}">{{ post.codeClean }}</code>
                         </section>
                     </div>
                 </div>
                 <div class="row comments">
 
                     <div class="small-12 medium-6 columns">
-                        <h4>936 Commentaires</h4>
-                        {% for comment in comments %}
+                        {% set comment = comments %}
+                        <h4>{{ post.commentaires|length }} Commentaire{% if post.commentaires|length > 1 %}{{ 's' }}{% endif %}</h4>
+                        {% for comment in post.commentaires %}
                         <div class="comment">
                             <div class="userpicComment">
-                                <img src="http://lorempixel.com/50/50/cats/" alt="profile picture"/>
+                                <img src="{% if comment.user.pictureName is not null %}{{ asset('uploads/pictures/nastypic_' ~ post.member ~ '.jpg') }}{% else %}{{ asset('bundles/nastycodefront/img/userpic.png') }}{% endif %}" alt="Profile Picture">
                             </div>
                             <div class="userComment">
                                 <header>{{ comment.user.username }}</header>
@@ -55,7 +56,7 @@
                         </div>
                         {% endfor %}
                         <p class="text-center">
-                            <a href="{{ path('nastycode_front_posts_post', {'id': post.id}) }}">voir tous les commentaires</a>
+                            <a href="{{ path('nastycode_front_posts_post', {'id': post.id}) }}">{% if post.commentaires|length > 3 %}{{ 'Voir tous les commentaires' }}{% endif %}</a>
                         </p>
                     </div>
                     <div class="small-12 medium-6 columns">

@@ -36,6 +36,16 @@ class User extends BaseUser
      */
     public $file;
 
+    /**
+     * @ORM\OneToMany(targetEntity="Nastycode\Bundle\FrontBundle\Entity\Publication", mappedBy="user")
+     **/
+    protected $posts;
+
+    /**
+     * @ORM\OneToMany(targetEntity="Nastycode\Bundle\FrontBundle\Entity\Commentaires", mappedBy="user")
+     **/
+    protected $commentaires;
+
     public function getWebPath()
     {
         return null === $this->pictureName ? null : $this->getUploadDir().'/'.$this->pictureName;
@@ -124,5 +134,13 @@ class User extends BaseUser
     public function getLikes()
     {
         return $this->likes;
+    }
+
+    public function getPosts(){
+        return $this->posts;
+    }
+
+    public function getCommentaires(){
+        return $this->commentaires;
     }
 }

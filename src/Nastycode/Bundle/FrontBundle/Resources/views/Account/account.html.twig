@@ -46,9 +46,9 @@
 		<div class="row">
 			<div class="small-12 medium-8 medium-centered columns">
 				<div class="statsUser tabs" data-tab>
-					<div class="circleStat"><a href="#panelstatPosts">8</a></div>
+					<div class="circleStat"><a href="#panelstatPosts">{{ app.user.posts|length }}</a></div>
 					<div class="circleStat active"><a href="#panelstatLikes">12</a></div>
-					<div class="circleStat"><a href="#panelstatComments">2</a></div>
+					<div class="circleStat"><a href="#panelstatComments">{{ app.user.commentaires|length }}</a></div>
 				</div>
 			</div>
 		</div>
@@ -58,28 +58,19 @@
 					<div class="statPosts content" id="panelstatPosts">
 					 	<h3>Vos nastyCodes</h3>
 					 	<ul>
-					 		<li>
-					 			<a href="#">
-					 				<div class="userPics">
-					 					<span>2</span>
-					 				</div>
-					 				<div class="detailPost">
-					 					<h4>MonCode1</h4>
-					 					<p>0 commentaire</p>
-					 				</div>
-					 			</a>
-					 		</li>
-					 		<li>
-					 			<a href="#">
-					 				<div class="userPics">
-					 					<span>8</span>
-					 				</div>
-					 				<div class="detailPost">
-						 				<h4>HeyMonCode2</h4>
-						 				<p>1 commentaire</p>
-					 				</div>
-					 			</a>
-					 		</li>
+                            {% for post in app.user.posts %}
+                                <li>
+                                    <a href="{{ path('nastycode_front_posts_post', {'id': post.id}) }}">
+                                        <div class="userPics" style="background-image: url('{% if post.user.pictureName is not null %}{{ asset('uploads/pictures/nastypic_' ~ post.member ~ '.jpg') }}{% else %}{{ asset('bundles/nastycodefront/img/userpic.png') }}{% endif %}'); background-repeat: no-repeat;">
+                                            <span>{{ post.likes }}</span>
+                                        </div>
+                                        <div class="detailPost">
+                                            <h4>{{ post.title }}</h4>
+                                            <p>{{ post.commentaires|length }} commentaire</p>
+                                        </div>
+                                    </a>
+                                </li>
+                            {% endfor %}
 					 	</ul>
 					</div>
 					<div class="statLikes content" id="panelstatLikes">
@@ -112,29 +103,21 @@
 					<div class="statComments content" id="panelstatComments">
 					 	<h3>Vous avez récemment commenté:</h3>
 					 	<ul>
-					 		<li class="comments">
-					 			<a href="#">
-									<div class="userPics" style="background-image: url('http://lorempixel.com/70/70/cats/'); background-repeat: no-repeat;">
-					 					<span>2</span>
-					 				</div>
-					 				<div class="detailPost">
-					 					<h4>COCOde</h4>
-					 					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-					 				</div>
-					 			</a>
-					 		</li>
-					 		<li class="comments">
-					 			<a href="#">
-									<div class="userPics" style="background-image: url('http://lorempixel.com/70/70/cats/'); background-repeat: no-repeat;">
-					 					<span>8</span>
-					 				</div>
-					 				<div class="detailPost">
-						 				<h4>KOde</h4>
-						 				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis quam, magni earum.</p>
-					 				</div>
-					 			</a>
-					 		</li>
-					 	</ul>
+                            {% for commentaire in app.user.commentaires %}
+                                <li class="comments">
+                                    <a href="{{ path('nastycode_front_posts_post', {'id': commentaire.post.id}) }}">
+                                        <div class="userPics" style="background-image: url('{% if commentaire.post.user.pictureName is not null %}{{ asset('uploads/pictures/nastypic_' ~ commentaire.post.member ~ '.jpg') }}{% else %}{{ asset('bundles/nastycodefront/img/userpic.png') }}{% endif %}'); background-repeat: no-repeat;">
+                                            <span>{{ commentaire.post.likes }}</span>
+                                        </div>
+                                        <div class="detailPost">
+                                            <h4>{{ commentaire.post.title }}</h4>
+                                            <p>{{ commentaire.commentaires }}</p>
+                                        </div>
+                                        <input type="button" value="like" data-id="{{ commentaire.post.id }}">
+                                    </a>
+                                </li>
+                            {% endfor %}
+                        </ul>
 					</div>
 				</div>
 			</div>

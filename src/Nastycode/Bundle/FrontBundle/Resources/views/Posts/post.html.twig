@@ -10,10 +10,10 @@
 			<div class="row">
 				<div class="info-author-code small-12 columns">
 					<div class="picUser">
-						<img src="{{ asset('uploads/pictures/nastypic_' ~ post.member ~ '.jpg') }}" alt="Profile Picture"/>
+                        <img src="{% if post.user.pictureName is not null %}{{ asset('uploads/pictures/nastypic_' ~ post.member ~ '.jpg') }}{% else %}{{ asset('bundles/nastycodefront/img/userpic.png') }}{% endif %}" alt="Profile Picture">
 					</div>
 					<div class="descrCode">
-						<h2><a href="#">{{ post.title }}</a> <small>par {{ post.member }}</small></h2>
+						<h2><a href="#">{{ post.title }}</a> <small>par {{ post.user.username }}</small></h2>
 						<p>{{ post.description }}</p>
 					</div>
 				</div>
@@ -25,7 +25,7 @@
 							<label>{{ post.lang|upper }}</label>
 							<h5>{{ post.title }}</h5>
 						</header>
-						<code class="language-{{ post.lang }} fullSize">{{ post.codeNasty|raw }}</code>
+						<code class="language-{{ post.lang }} fullSize">{{ post.codeNasty }}</code>
 					</section>
 				</div>
 			</div>
@@ -34,9 +34,9 @@
 					<section>
 						<header>
 							<label>{{ post.lang|upper }}</label>
-							<h5>{{ post.member }} propose cette correction</h5>
+							<h5>{{ post.user.username }} propose cette correction</h5>
 						</header>
-						<code class="language-{{ post.lang }} fullSize">{{ post.codeClean|raw }}</code>
+						<code class="language-{{ post.lang }} fullSize">{{ post.codeClean }}</code>
 					</section>
 				</div>
 			</div>
@@ -44,13 +44,14 @@
 			<div class="row comments">
 				<div class="small-12 columns">
 					<h4>Ecrire un commentaire:</h4>
+                    {% set comment = formcomments[loop.index0] %}
                     {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-                        <form class="commentForm" action="#">
-                            <ul>
-                                <li class="commentFormArea">{{ form_widget(comment.commentaires) }}</li>
-                                <li class="commentFormsubmit">{{ form_widget(comment.envoyer) }}</li>
-                            </ul>
-                        </form>
+                        {{ form_start(comment, {'attr': {'class': 'commentForm'}}) }}
+                        <ul>
+                            <li class="commentFormArea">{{ form_widget(comment.commentaires) }}</li>
+                            <li class="commentFormsubmit">{{ form_widget(comment.envoyer) }}</li>
+                        </ul>
+                        {{ form_end(comment) }}
                     {% else %}
                         <p class="text-center">Pour poster un commentaire, <a href="{{ path('fos_user_security_login') }}">veuillez vous connecter</a>.</p>
                         <p class="text-center">Vous n'avez pas de compte ? <a href="{{ path('fos_user_registration_register') }}">Inscrivez-vous !</a></p>
@@ -59,25 +60,19 @@
 			</div>
 			<div class="row comments">
 				<div class="small-12 columns">
-					<h4>936 Commentaires</h4>
-					<div class="comment">
-						<div class="userpicComment">
-							<img src="http://lorempixel.com/50/50/cats/" alt="profile picture"/>
-						</div>
-						<div class="userComment">
-							<header>Francky</header>
-							<p>trop cool</p>
-						</div>
-					</div>
-					<div class="comment">
-						<div class="userpicComment">
-							<img src="http://lorempixel.com/50/50/cats/" alt="profile picture"/>
-						</div>
-						<div class="userComment">
-							<header>Vincent</header>
-							<p>Trop des barres, Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos quasi fugiat culpa cumque consequuntur, dolor fugit neque, ipsam.</p>
-						</div>
-					</div>
+                    {% set comment = comments %}
+                    <h4>{{ post.commentaires|length }} Commentaire{% if post.commentaires|length > 1 %}{{ 's' }}{% endif %}</h4>
+                    {% for comment in post.commentaires %}
+                        <div class="comment">
+                            <div class="userpicComment">
+                                <img src="{% if comment.user.pictureName is not null %}{{ asset('uploads/pictures/nastypic_' ~ post.member ~ '.jpg') }}{% else %}{{ asset('bundles/nastycodefront/img/userpic.png') }}{% endif %}" alt="Profile Picture">
+                            </div>
+                            <div class="userComment">
+                                <header>{{ comment.user.username }}</header>
+                                <p>{{ comment.commentaires }}</p>
+                            </div>
+                        </div>
+                    {% endfor %}
 				</div>
 			</div>
             {% endfor %}

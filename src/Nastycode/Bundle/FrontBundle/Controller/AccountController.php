@@ -8,6 +8,8 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Nastycode\Bundle\UserBundle\Form\IdentityPictureType;
+use Nastycode\Bundle\FrontBundle\Entity\Commentaires;
+use Nastycode\Bundle\FrontBundle\Entity\Publication;
 
 
 class AccountController extends Controller
@@ -18,10 +20,29 @@ class AccountController extends Controller
      */
     public function accountAction()
     {
-        $user = $this->getUser();
-        return $this->render('NastycodeFrontBundle:Account:account.html.twig', array(
-            'user' => $user
-        ));
+            $repository = $this
+                ->getDoctrine()
+                ->getManager()
+                ->getRepository('NastycodeFrontBundle:Publication')
+            ;
+            $posts = $repository->findBy(array(), array());
+
+            $commentrepository = $this
+                ->getDoctrine()
+                ->getManager()
+                ->getRepository('NastycodeFrontBundle:Commentaires')
+            ;
+            $comments = $commentrepository->findBy(array(), array());
+
+            $commentaires = new Commentaires();
+            $commentaires->getPost();
+
+            $user = $this->getUser();
+            return $this->render('NastycodeFrontBundle:Account:account.html.twig', array(
+                'posts' => $posts,
+                'comments' => $comments,
+                'user' => $user,
+            ));
     }
     /**
      * @Route("/me2", name="upload_file")
