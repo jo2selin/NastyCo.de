@@ -27,6 +27,8 @@ class PostsController extends Controller
 
         $commentaires = new Commentaires();
 
+        $commentaires -> setUsername($this -> getUser() -> getUsername());
+
         $comment = $this->get('form.factory')->createBuilder('form', $commentaires)
             ->add('commentaires', 'textarea')
             ->add('save',      'submit')

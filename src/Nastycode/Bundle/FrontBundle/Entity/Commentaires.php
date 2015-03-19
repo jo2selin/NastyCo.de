@@ -31,6 +31,13 @@ class Commentaires
      */
     private $commentaires;
 
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="username", type="string", length=255)
+     */
+    private $username;
+
 
     /**
      * Get id
