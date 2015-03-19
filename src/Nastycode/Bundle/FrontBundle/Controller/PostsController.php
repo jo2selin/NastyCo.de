@@ -238,4 +238,5 @@ class PostsController extends Controller
 
         return $reponse;
     }
+
 }

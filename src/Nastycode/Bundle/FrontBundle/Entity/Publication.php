@@ -89,6 +89,13 @@ class Publication
     private $published = true;
 
     /**
+     * @var string
+     *
+     * @ORM\ManyToOne(targetEntity="Publication", inversedBy="commentaires")
+     */
+    private $post;
+
+    /**
      * @ORM\OneToMany(targetEntity="Commentaires", mappedBy="post")
      **/
     private $commentaires;
@@ -358,5 +365,28 @@ class Publication
     public function getTitle()
     {
         return $this->title;
+    }
+
+    /**
+     * Set Postid
+     *
+     * @param string $userid
+     * @return Commentaires
+     */
+    public function setPost($commentaire)
+    {
+        $this->post = $commentaire;
+
+        return $this;
+    }
+
+    /**
+     * Get Postid
+     *
+     * @return string
+     */
+    public function getPost()
+    {
+        return $this->post;
     }
 }

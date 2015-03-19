@@ -5,7 +5,7 @@
 {% endif %}
 
 <form action="{{ path('upload_file') }}" method="post" {{ form_enctype(form) }}>
-    
+
     {{ form_widget(form.file) }}
 
     <input type="submit" value="Uploader">

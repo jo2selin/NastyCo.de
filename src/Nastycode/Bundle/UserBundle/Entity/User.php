@@ -26,8 +26,10 @@ class User extends BaseUser
      */
     public $pictureName;
 
-/**
+    /**
      * @ORM\Column(type="text", nullable=true)
+     *
+     *
      */
     public $likes;
 
@@ -45,6 +47,11 @@ class User extends BaseUser
      * @ORM\OneToMany(targetEntity="Nastycode\Bundle\FrontBundle\Entity\Commentaires", mappedBy="user")
      **/
     protected $commentaires;
+
+    /**
+     * @ORM\OneToMany(targetEntity="Nastycode\Bundle\FrontBundle\Entity\Likes", mappedBy="user")
+     */
+    public $likedposts;
 
     public function getWebPath()
     {
@@ -129,18 +136,20 @@ class User extends BaseUser
     /**
      * Get likes
      *
-     * @return string 
+     * @return string
      */
     public function getLikes()
     {
         return $this->likes;
     }
 
-    public function getPosts(){
+    public function getPosts()
+    {
         return $this->posts;
     }
 
-    public function getCommentaires(){
+    public function getCommentaires()
+    {
         return $this->commentaires;
     }
 }
