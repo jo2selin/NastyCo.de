@@ -120,6 +120,17 @@ header.headerNasty{
                     border-bottom:solid 5px darken($primary-color, 5%);
                 }
             }
+            .f-dropdown{
+                width: auto!important;
+                max-width: none!important;
+                padding-bottom: 0px!important;
+                form{
+                    width: 240px;
+                    input[type=submit] {
+                        @include button($button-med, $primary-color, false, true, false, false, darken($primary-color, 10%), $secondary-color, true, $secondary-color);
+                    }
+                }
+            }
         }
         .connected {
             height:40px;

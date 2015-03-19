@@ -28,7 +28,7 @@ class PostsController extends Controller
         $posts = $repository->findBy(array(), array(), 10);
 
         $commentaires = new Commentaires();
-
+        
         $formcomment = array();
 
 
