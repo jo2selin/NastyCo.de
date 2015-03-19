@@ -34,7 +34,7 @@ class Commentaires
     /**
      * @var string
      *
-     * @ORM\ManyToOne(targetEntity="Publication")
+     * @ORM\ManyToOne(targetEntity="Publication", inversedBy="commentaires")
      */
     private $post;
 

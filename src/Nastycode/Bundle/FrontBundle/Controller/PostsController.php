@@ -98,13 +98,21 @@ class PostsController extends Controller
 
         $commentaires = new Commentaires();
 
-        $commentaires->setUsername($this->getUser()->getUsername());
+        $formcomment = array();
 
-        $comment = $this->get('form.factory')->createBuilder('form', $commentaires)
-            ->add('commentaires', 'textarea')
-            ->add('envoyer',      'submit')
-            ->getForm()
-        ;
+
+        foreach($posts as $post){
+            $commentaires = new Commentaires();
+            $commentaires->setPost($post);
+            $comment = $this->get('form.factory')->createBuilder('form', $commentaires)
+                ->setMethod("POST")
+                ->add('commentaires', 'textarea')
+                ->add('idpost', 'hidden', array('data'=>$post->getId(), 'mapped'=>false))
+                ->add('envoyer',      'submit')
+                ->getForm()
+            ;
+            $formcomment[] = $comment->createView();
+        }
 
         // On fait le lien Requête <-> Formulaire
         // À partir de maintenant, la variable $commentaires contient les valeurs entrées dans le formulaire par le visiteur
@@ -113,6 +121,10 @@ class PostsController extends Controller
         // On vérifie que les valeurs entrées sont correctes
         // (Nous verrons la validation des objets en détail dans le prochain chapitre)
         if ($comment->isValid()) {
+            $data = $request->request->all();
+            $post = $repository->find($data["form"]['idpost']);
+            $commentaires->setUser($this->getUser());
+            $commentaires->setPost($post);
             // On l'enregistre notre objet $commentaires dans la base de données, par exemple
             $em = $this->getDoctrine()->getManager();
             $em->persist($commentaires);
@@ -121,13 +133,20 @@ class PostsController extends Controller
             $request->getSession()->getFlashBag()->add('notice', 'Annonce bien enregistrée.');
 
             // On redirige vers la page de visualisation de l'annonce nouvellement créée
-            return $this->redirect($this->generateUrl('nastycode_comment_code', array('id' => $commentaires->getId())));
+            return $this->redirect($this->generateUrl('nastycode_front_posts_posts', array('id' => $commentaires->getId())));
         }
+        $commentrepository = $this
+            ->getDoctrine()
+            ->getManager()
+            ->getRepository('NastycodeFrontBundle:Commentaires')
+        ;
+        $comments = $commentrepository->findBy(array(), array());
 
         $user = $this->getUser();
         return $this->render('NastycodeFrontBundle:Posts:post.html.twig', array(
-            'comment' => $comment->createView(),
+            'formcomments' => $formcomment,
             'posts' => $posts,
+            'comments' => $comments,
             'user' => $user,
         ));
     }
@@ -148,7 +167,7 @@ class PostsController extends Controller
         $form = $this->get('form.factory')->createBuilder('form', $publication)
             ->setMethod("POST")
             ->add('title', 'text')
-            ->add('codenasty')
+            ->add('codenasty', 'textarea')
             ->add('codeclean', 'textarea')
             ->add('description', 'textarea')
             ->add('lang', 'choice', array(
