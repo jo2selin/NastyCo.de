@@ -1,10 +1,10 @@
 # NastyCo.de
 
-  ![Logo](http://jeromepogeant.com/img/Nastycodelogo.png)
+  ![Logo](http://jeromepogeant.com/img/Nastycodelogo.png "Nastycode Logo")
 
 
 ## Description
-**NastyCo.de** vous permet de partager les codes les plus sales que vous rencontrez à travers vos différents projet web. Que ce soit le stagiaire, une équipe à l'autre bout du monde ou votre Lead Dev, partagez leurs nastyCodes sur le site, proposez une correction et laissez les internautes donner leurs avis !
+**[NastyCo.de](http://nastyco.de)** allows you to share the dirtiest codes that you see through your various web project. Whether a trainee, a team at the other side of the planet or your Lead Dev, share their nastyCodes on the site, suggest their a correction and share your opinions !
 
 ## Installation
 
@@ -19,8 +19,9 @@ Download and install **Node.js**:
 
 >Download the latest version of Node here [Nodejs.org](https://nodejs.org/download/)
 <br/>
-**If you are on Windows**, install **Ruby**:
 
+
+**If you are on Windows**, install **Ruby**:
 >Download the latest version of Ruby here: [Ruby](http://rubyinstaller.org/downloads/)
 
 <br/>
@@ -39,33 +40,58 @@ Install Composer (**Windows**):
 Install Gulp:
 
 ```console
-$ npm install --global gulp
+$ sudo npm install --global gulp
 ```
 
 Update NPM (**If needed**)
 
 ```console
-$ npm install -g npm
+$ sudo npm install -g npm
 ```
-
+<br/>
 After installing all this stuff, you will need to download Symphony and Gulp dependencies.
 
 To do that run this to commands inside of your cloned repo.
 
 ```console
-$ npm install --save-dev
+$ sudo npm install --save-dev
 ```
 
 ```console
-$ php composer.phar update
+$ sudo php composer.phar update
 ```
+>Don't forget to setting up your parameters at the end of Symphony dependencies installation !
 
 **You're almost there !**
 
+Create your database and update it:
 
+```console
+$ sudo php app/console doctrine:database:create
+$ sudo php app/console doctrine:schema:update --force
+```
 
-Enjoy Coding ![Nastyco](http://jeromepogeant.com/img/lastyco.png)
+>If you have errors check your Parameters.yml file to reconfigure it.
+>**NastyCo.de\app\config\Parameters.yml**
 
+<br/>
+
+There is some Gulp commands:
+
+```console
+$ gulp Sass   // Complile your Sass
+$ gulp script   // Minimize all your js script
+$ gulp image   // Optimize your images
+$ gulp font   // Copie all your font file into the right folder
+
+$ gulp build   // Execute the fourth commande below at the same time
+
+$ gulp watch   // Watch any modification of your Sass files and auto-complie it
+```
+
+**You're done ! Let's code**
+
+<br/>
 ### Known Issues
 
 If you discover any bugs, feel free to create an issue on GitHub fork and
@@ -77,4 +103,4 @@ send us a pull request.
 * Josselin (https://github.com/jo2selin)
 * Zac (https://github.com/ZacJoestar)
 
-
+![Nastyco](http://jeromepogeant.com/img/lastyco.png "Enjoy Coding")
