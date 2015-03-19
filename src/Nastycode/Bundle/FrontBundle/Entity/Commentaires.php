@@ -34,25 +34,16 @@ class Commentaires
     /**
      * @var string
      *
-     * @ORM\ManyToOne(targetEntity="Publications", cascade={"persist"})
-     * @ORM\Column(name="postid", type="integer")
+     * @ORM\ManyToOne(targetEntity="Publication")
      */
-    private $postid;
+    private $post;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="userid", type="integer")
+     * @ORM\ManyToOne(targetEntity="Nastycode\Bundle\UserBundle\Entity\User")
      */
-    private $userid;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="username", type="string", length=255)
-     */
-    private $username;
-
+    private $user;
 
     /**
      * Get id
@@ -70,23 +61,6 @@ class Commentaires
     }
 
     /**
-     * Set Username
-     *
-     * @return string
-     */
-    public function setUsername($username)
-    {
-        $this->username = $username;
-
-        return $this;
-    }
-
-    public function getCommentaires()
-    {
-        return $this->commentaires;
-    }
-
-    /**
      * Set Commentaires
      *
      * @return string
@@ -99,14 +73,24 @@ class Commentaires
     }
 
     /**
+     * Get Commentaires
+     *
+     * @return string
+     */
+    public function getCommentaires()
+    {
+        return $this->commentaires;
+    }
+
+    /**
      * Set Userid
      *
      * @param string $memberid
      * @return Commentaires
      */
-    public function setUserid($user)
+    public function setUser($user)
     {
-        $this->userid = $user;
+        $this->user = $user;
 
         return $this;
     }
@@ -116,9 +100,9 @@ class Commentaires
      *
      * @return string
      */
-    public function getUserid()
+    public function getUser()
     {
-        return $this->id;
+        return $this->user;
     }
 
     /**
@@ -127,9 +111,9 @@ class Commentaires
      * @param string $userid
      * @return Commentaires
      */
-    public function setPostid($commentaire)
+    public function setPost($commentaire)
     {
-        $this->postid = $commentaire;
+        $this->post = $commentaire;
 
         return $this;
     }
@@ -139,8 +123,8 @@ class Commentaires
      *
      * @return string
      */
-    public function getPostid()
+    public function getPost()
     {
-        return $this->id;
+        return $this->post;
     }
 }

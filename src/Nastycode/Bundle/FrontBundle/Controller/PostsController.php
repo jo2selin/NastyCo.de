@@ -25,18 +25,25 @@ class PostsController extends Controller
             ->getManager()
             ->getRepository('NastycodeFrontBundle:Publication')
         ;
-        $posts = $repository->findBy(array(), array('date' => 'DESC'), 10);
+        $posts = $repository->findBy(array(), array(), 10);
 
         $commentaires = new Commentaires();
+        
+        $formcomment = array();
 
-        $commentaires->setUsername($this->getUser()->getUsername());
 
-        $comment = $this->get('form.factory')->createBuilder('form', $commentaires)
-            ->setMethod("POST")
-            ->add('commentaires', 'textarea')
-            ->add('envoyer',      'submit')
-            ->getForm()
-        ;
+        foreach($posts as $post){
+            $commentaires = new Commentaires();
+            $commentaires->setPost($post);
+            $comment = $this->get('form.factory')->createBuilder('form', $commentaires)
+                ->setMethod("POST")
+                ->add('commentaires', 'textarea')
+                ->add('idpost', 'hidden', array('data'=>$post->getId(), 'mapped'=>false))
+                ->add('envoyer',      'submit')
+                ->getForm()
+            ;
+            $formcomment[] = $comment->createView();
+        }
 
         // On fait le lien Requête <-> Formulaire
         // À partir de maintenant, la variable $commentaires contient les valeurs entrées dans le formulaire par le visiteur
@@ -45,6 +52,10 @@ class PostsController extends Controller
         // On vérifie que les valeurs entrées sont correctes
         // (Nous verrons la validation des objets en détail dans le prochain chapitre)
         if ($comment->isValid()) {
+            $data = $request->request->all();
+            $post = $repository->find($data["form"]['idpost']);
+            $commentaires->setUser($this->getUser());
+            $commentaires->setPost($post);
             // On l'enregistre notre objet $commentaires dans la base de données, par exemple
             $em = $this->getDoctrine()->getManager();
             $em->persist($commentaires);
@@ -64,7 +75,7 @@ class PostsController extends Controller
 
         $user = $this->getUser();
         return $this->render('NastycodeFrontBundle:Posts:posts.html.twig', array(
-            'comment' => $comment->createView(),
+            'formcomments' => $formcomment,
             'posts' => $posts,
             'comments' => $comments,
             'user' => $user,
@@ -132,12 +143,12 @@ class PostsController extends Controller
 
         $publication = new Publication();
 
-        $publication->setUsername($this->getUser()->getUsername());
+        $publication->setUser($this->getUser());
 
         $form = $this->get('form.factory')->createBuilder('form', $publication)
             ->setMethod("POST")
             ->add('title', 'text')
-            ->add('codenasty', 'textarea')
+            ->add('codenasty')
             ->add('codeclean', 'textarea')
             ->add('description', 'textarea')
             ->add('lang', 'choice', array(

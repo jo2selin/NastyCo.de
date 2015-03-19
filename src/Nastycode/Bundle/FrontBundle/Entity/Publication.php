@@ -7,6 +7,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\HttpFoundation\File;
 
 
+
 /**
  * Publication
  *
@@ -27,9 +28,9 @@ class Publication
     /**
      * @var string
      *
-     * @ORM\Column(name="username", type="string", length=255)
+     * @ORM\ManyToOne(targetEntity="Nastycode\Bundle\UserBundle\Entity\User")
      */
-    private $username;
+    private $user;
 
  /**
      * @var string
@@ -89,6 +90,10 @@ class Publication
 
     public function __construct() {
         $this->date=new \DateTime();
+    }
+
+    public function __toString() {
+        return $this->title;
     }
 
     /**
@@ -179,19 +184,19 @@ class Publication
         return $this->codeNasty;
     }
 
-    public function getUsername()
+    public function getUser()
     {
-        return $this->username;
+        return $this->user;
     }
 
     /**
-    * Set Username
+    * Set User
     *
     * @return string
     */
-    public function setUsername($username)
+    public function setUser($user)
     {
-        $this->username = $username;
+        $this->user = $user;
 
         return $this;
     }
