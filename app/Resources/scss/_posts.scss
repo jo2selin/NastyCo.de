@@ -167,3 +167,18 @@ section.homeExemple{
         }
     }
 }
+
+section.sectionAddPost{
+    .contentAddPostPage{
+        padding-top: 20px;
+    }
+    h3{        
+        color: $tertiary-color;
+    }
+    .nastyTextarea{
+        min-height: 150px;
+        min-width: 100%;
+        background: $tertiary-color;
+        color: $white;
+    }
+}
