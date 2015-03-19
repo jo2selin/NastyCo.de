@@ -5,8 +5,8 @@
 		{% block menu %}
 			{{ include("NastycodeFrontBundle::menu.html.twig") }}
 		{% endblock %}
-		<article>
             {% for post in posts %}
+		<article>
                 <div class="row">
                     <div class="info-author-code small-12 columns">
                         <div class="picUser">
@@ -26,7 +26,7 @@
                                 <h5>{{ post.title }}</h5>
                             </header>
                                 <code class="language-{{ post.lang }}">{{ post.codeNasty }}</code>
-
+                                <div class="likePost" data-id="{{ post.id }}"><span>+1</span><p>Oui, ce code est Nasty.</p></div>
                         </section>
                     </div>
                     <div class="small-12 medium-6 columns">
@@ -75,8 +75,8 @@
                         {% endif %}
                     </div>
                 </div>
-            {% endfor %}
 		</article>
+            {% endfor %}
 	</section>
 
 {% endblock %}

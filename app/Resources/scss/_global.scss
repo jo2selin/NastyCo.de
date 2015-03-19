@@ -28,7 +28,7 @@ section.fullWidth {
 
 section.orange {
 	// @include nasty-content("orange");
-    background:$primary-color;
+    background-color:$primary-color;
     .button {
         @include button($button-med, $primary-color, true, false, false, false, darken($primary-color, 10%), $secondary-color, true, $secondary-color);
     }
@@ -38,7 +38,7 @@ section.orange {
 }
 
 section.yellow {
-    background:$secondary-color;
+    background-color:$secondary-color;
     .button {
         @include button($button-med, $secondary-color, true, false, false, false, darken($secondary-color, 10%), $secondary-color, true, $secondary-color);
     }
@@ -48,7 +48,7 @@ section.yellow {
 }
 
 section.grey {
-    background:$smoke;
+    background-color:$white-smoke;
     .button {
         @include button($button-med, $smoke, true, false, false, false, darken($smoke, 10%), $jumbo, true, $jumbo);
     }
@@ -170,6 +170,21 @@ header.headerNasty{
                 }
             }
         }
+
+        .flash-notice{
+            @include alert($tertiary-color, false);
+            position: absolute;
+            top:0;
+            right:0;
+        }
+        // .close{
+        //     position: absolute;
+        //     top: 0;
+        //     right: 0;
+        //     margin-top: 10px;
+        //     margin-right: 10px;
+        //     font-size: 20px;
+        // }
     }
 }
 
@@ -210,3 +225,4 @@ footer.footerLayout{
         }
     }
 }
+

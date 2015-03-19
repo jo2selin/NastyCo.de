@@ -3,6 +3,7 @@ section.homeExemple {
     background-image:url('../img/back_posts.png');
     article {
         margin:30px 0 0 0;
+        border-bottom: 1px solid $iron;
         .info-author-code {
             display:table;
             .picUser {
@@ -37,7 +38,7 @@ section.homeExemple {
         }
         .scriptsNastycode {
             section {
-                background:$tertiary-color;
+                // background:$tertiary-color;
                 max-width:80%;
                 margin:auto;
                 margin-bottom: 20px;
@@ -78,11 +79,36 @@ section.homeExemple {
                         max-height:1200px;
                     }
                 }
+                .likePost{
+                    display: table;
+                    margin-top: 10px;
+                    border-radius: 5px;
+                    font-size:rem-calc(12);
+                    cursor: pointer;
+                    span{
+                        background: $secondary-color;
+                        color: $primary-color;
+                        font-weight: bold;
+                        padding: 5px;
+                        display: table-cell;
+                        font-size: inherit;
+                    }
+                    p{
+                        background: $primary-color;
+                        color: $white;
+                        padding: 5px;
+                        display: table-cell;
+                        font-size: inherit;
+                        @include single-transition(background-color);
+                    }
+                    &:hover p{
+                        background: lighten($primary-color,10%);
+                    }
+                }
             }
         }
         .comments {
             display:table;
-            margin-top:20px;
             h4 {
                 color:$tertiary-color;
             }
