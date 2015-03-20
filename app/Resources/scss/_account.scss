@@ -14,7 +14,7 @@ section.myAccount {
             @media #{$medium-up} {
                 display:inline-block;
                 margin-right:20px;
-                margin-left:160px;
+                margin-left:135px;
             }
             img {
                 @include nasty-circle(150px);
