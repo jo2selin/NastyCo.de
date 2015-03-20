@@ -51,7 +51,7 @@ $ sudo npm install -g npm
 <br/>
 After installing all this stuff, you will need to download Symphony and Gulp dependencies.
 
-To do that run this to commands inside of your cloned repo.
+To do that run this two commands inside of your cloned repo.
 
 ```console
 $ sudo npm install --save-dev
@@ -84,7 +84,7 @@ $ gulp script   // Minimize all your js script
 $ gulp image   // Optimize your images
 $ gulp font   // Copie all your font file into the right folder
 
-$ gulp build   // Execute the fourth commande below at the same time
+$ gulp build   // Execute the fourth commands below at the same time
 
 $ gulp watch   // Watch any modification of your Sass files and auto-complie it
 ```
