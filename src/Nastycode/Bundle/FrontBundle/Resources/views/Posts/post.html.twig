@@ -10,7 +10,7 @@
 			<div class="row">
 				<div class="info-author-code small-12 columns">
 					<div class="picUser">
-                        <img src="{% if post.user.pictureName is not null %}{{ asset('uploads/pictures/nastypic_' ~ post.member ~ '.jpg') }}{% else %}{{ asset('bundles/nastycodefront/img/userpic.png') }}{% endif %}" alt="Profile Picture">
+                        <img src="{% if post.user.pictureName is not null %}{{ asset('uploads/pictures/nastypic_' ~ post.user.id ~ '.jpg') }}{% else %}{{ asset('bundles/nastycodefront/img/userpic.png') }}{% endif %}" alt="Profile Picture">
 					</div>
 					<div class="descrCode">
 						<h2><a href="#">{{ post.title }}</a> <small>par {{ post.user.username }}</small></h2>
@@ -26,7 +26,7 @@
 							<h5>{{ post.title }}</h5>
 						</header>
 						<code class="language-{{ post.lang }} fullSize">{{ post.codeNasty }}</code>
-					</section>
+                    </section>
 				</div>
 			</div>
 			<div class="row scriptsNastycode">
@@ -37,7 +37,8 @@
 							<h5>{{ post.user.username }} propose cette correction</h5>
 						</header>
 						<code class="language-{{ post.lang }} fullSize">{{ post.codeClean }}</code>
-					</section>
+                        <div class="likePost" data-id="{{ post.id }}"><span>+1</span><p>Oui, ce code est Nasty.</p></div>
+                    </section>
 				</div>
 			</div>
 
@@ -65,7 +66,7 @@
                     {% for comment in post.commentaires %}
                         <div class="comment">
                             <div class="userpicComment">
-                                <img src="{% if comment.user.pictureName is not null %}{{ asset('uploads/pictures/nastypic_' ~ post.member ~ '.jpg') }}{% else %}{{ asset('bundles/nastycodefront/img/userpic.png') }}{% endif %}" alt="Profile Picture">
+                                <img src="{% if comment.user.pictureName is not null %}{{ asset('uploads/pictures/nastypic_' ~ comment.user.id ~ '.jpg') }}{% else %}{{ asset('bundles/nastycodefront/img/userpic.png') }}{% endif %}" alt="Profile Picture">
                             </div>
                             <div class="userComment">
                                 <header>{{ comment.user.username }}</header>

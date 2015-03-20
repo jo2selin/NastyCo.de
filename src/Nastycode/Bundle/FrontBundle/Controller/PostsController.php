@@ -72,7 +72,7 @@ class PostsController extends Controller
             ->getManager()
             ->getRepository('NastycodeFrontBundle:Commentaires')
         ;
-        $comments = $commentrepository->findBy(array(), array(), 2);
+        $comments = $commentrepository->findBy(array(), array(), 3);
 
         $user = $this->getUser();
         return $this->render('NastycodeFrontBundle:Posts:posts.html.twig', array(
@@ -141,7 +141,7 @@ class PostsController extends Controller
             ->getManager()
             ->getRepository('NastycodeFrontBundle:Commentaires')
         ;
-        $comments = $commentrepository->findBy(array(), array());
+        $comments = $commentrepository->findAll();
 
         $user = $this->getUser();
         return $this->render('NastycodeFrontBundle:Posts:post.html.twig', array(

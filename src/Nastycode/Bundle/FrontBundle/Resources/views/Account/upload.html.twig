@@ -6,7 +6,7 @@
 
 <form action="{{ path('upload_file') }}" method="post" {{ form_enctype(form) }}>
 
-    {{ form_widget(form.file) }}
+    {{ form_widget(form) }}
 
     <input type="submit" value="Uploader">
 </form>
